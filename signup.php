@@ -29,18 +29,26 @@
 				<div class="auth-box ">
 					<div class="left">
 						<div class="content">
-							<div class="header">
+							<div class="header ">
 								<div class="logo text-center"><img src="assets/img/logo-dark.png" alt="Klorofil Logo"></div>
-								<p class="lead">Login to your account</p>
+							 	<p class="lead">Login to your account</p>
 							</div>
 							<form class="form-auth-small" action="index.php">
-								<div class="form-group">
+                            <div class="form-group">
+									<label for="signin-email" class="control-label sr-only">Username</label>
+									<input type="text" name="username" class="form-control" id="signin-email" value="" placeholder="Username">
+								</div>
+                                <div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
-									<input type="email" name="email" class="form-control" id="signin-email" value="samuel.gold@domain.com" placeholder="Email">
+									<input type="email" name="email" class="form-control" id="signin-email"  placeholder="Email">
+								</div>
+								<div class="form-group">
+									<label for="signin-email" class="control-label sr-only">Phone No</label>
+									<input type="number" name="phoneno" class="form-control" id="signin-email"  placeholder="Phone No">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" name="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password">
+									<input type="password" name="password" class="form-control" id="signin-password"  placeholder="Password">
 								</div>
 								<div class="form-group clearfix">
 									<label class="fancy-checkbox element-left">

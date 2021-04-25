@@ -1,8 +1,8 @@
 # email-system
-task List
+Main task 
 WORKING on admin side (in progress)
 create send email with google apis (todo)
-create inbox (in progress)
+design userpanel (working)
 create trash email (todo)
 create notification (todo)
 create contac book (todo)

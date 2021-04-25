@@ -1,3 +1,11 @@
+<?php 
+
+session_start();
+if(!isset($_SESSION["username"])){
+header('Location: login.php');
+exit(); }
+
+?>
 <!doctype html>
 <html lang="en" class="fullscreen-bg">
 
@@ -33,7 +41,7 @@
 								<div class="logo text-center"><img src="assets/img/logo-dark.png" alt="Klorofil Logo"></div>
 								<p class="lead">Login to your account</p>
 							</div>
-							<form class="form-auth-small" action="index.php">
+							<form class="form-auth-small" action="Helper/login.php" method="post">
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
 									<input type="email" name="email" class="form-control" id="signin-email" value="samuel.gold@domain.com" placeholder="Email">
@@ -48,7 +56,7 @@
 										<span>Remember me</span>
 									</label>
 								</div>
-								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+								<button type="submit" name="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
                                 <a href="signup.php" class="btn btn-primary btn-lg btn-block">SINGUP</a>
 								<div class="bottom">
 									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Forgot password?</a></span>

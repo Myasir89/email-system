@@ -7,10 +7,10 @@
     <!-- menu --> 
     <ul class="mail-menu"> 
         <li class="active"> <a href="inbox.php"> <span class="badge badge-danger pull-right">6</span>Inbox</a> </li> 
-        <li> <a href="#"> <span class="badge badge-gray pull-right">1</span>Sent</a> </li> 
-        <li> <a href="#">Drafts</a> </li> 
-        <li> <a href="#"> <span class="badge badge-gray pull-right">1</span>Spam</a> </li> 
-        <li> <a href="#">Trash</a> </li> 
+        <li> <a href="sendEmail.php"> <span class="badge badge-gray pull-right">1</span>Sent</a> </li> 
+        <li> <a href="drafts.php">Drafts</a> </li> 
+        <li> <a href="spam.php"> <span class="badge badge-gray pull-right">1</span>Spam</a> </li> 
+        <li> <a href="trashEmails.php">Trash</a> </li> 
     </ul> 
     <div class="mail-distancer"></div> 
     <h4>Tags</h4> 

@@ -22,7 +22,8 @@
                         <!-- Reverse Caret --> 
                         <li class="caret"></li> 
                         <li> <a href="compose.php"> <i class="entypo-user"></i>Edit Profile</a> </li> 
-                        <li> <a href="inbox.php"> <i class="entypo-mail"></i>Inbox</a> </li>                     
+                        <li> <a href="inbox.php"> <i class="entypo-mail"></i>Inbox</a> </li> 
+                        <li> <a href="support/logout.php"> <i class="entypo-logout"></i>Logout</a> </li>                     
                     </ul>
                 </li>
                 <!-- <li> <a href="extra/login/index.html">Log Out <i class="entypo-logout right"></i> </a> </li>  -->

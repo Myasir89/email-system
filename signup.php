@@ -37,32 +37,42 @@ if(!isset($_SESSION['login_user'])){
                     <a href="dashboard/main/index.html" class="logo"> <img src="assets/images/logo%402x.png" width="120" alt="" /> </a> 
                     <p class="description">Create an account, it's free and takes few moments only!</p> 
                     <div class="login-progressbar-indicator"> <h3>43%</h3> <span>logging in...</span> </div> 
-                </div> 
+                </div>                 
             </div> 
 
             <div class="login-progressbar"><div></div></div> 
             <div class="login-form"> 
                 <div class="login-content"> 
                     <form method="post" name="form_register" role="form" method="POST" action="" id="form_register"> 
-                        <div class="form-register-success"> 
-                            <i class="entypo-check"></i> 
-                            <h3>You have been successfully registered.</h3> 
-                            <p>We have emailed you the confirmation link for your account.</p> 
-                        </div> 
+                    <?php if(isset($success)){ ?>
+                        <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    <?php } ?>
+                    <?php if(isset($error)){ ?>
+                        <div class="alert alert-danger"><?php echo $error; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                    <?php } ?>
                         <div class="form-steps"> 
                             <div class="step current" id="step-1"> 
+                                <div class="form-group"> 
+                                    <div class="input-group"> 
+                                        <div class="input-group-addon"> <i class="entypo-user-add"></i> </div> 
+                                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" data-mask="[a-zA-Z0-9_]+" data-is-regex="true" autocomplete="off" /> 
+                                        <span class="input-group-addon " style="color:white">@mail.com</span>
+                                    </div> 
+                                </div> 
                                 <div class="form-group"> 
                                     <div class="input-group"> 
                                         <div class="input-group-addon"> <i class="entypo-user"></i> </div> 
                                         <input type="text" class="form-control" name="name" id="name" placeholder="Full Name" autocomplete="off" /> 
                                     </div> 
-                                </div>
-                                <div class="form-group"> 
-                                    <div class="input-group"> 
-                                        <div class="input-group-addon"> <i class="entypo-phone"></i> </div> 
-                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" data-mask="phone" autocomplete="off" /> 
-                                    </div> 
-                                </div> 
+                                </div>                                 
                                 <div class="form-group"> 
                                     <div class="input-group"> 
                                         <div class="input-group-addon"> <i class="entypo-calendar"></i> </div> 
@@ -79,13 +89,12 @@ if(!isset($_SESSION['login_user'])){
                             <div class="step" id="step-2"> 
                                 <div class="form-group"> 
                                     <div class="input-group"> 
-                                        <div class="input-group-addon"> <i class="entypo-user-add"></i> </div> 
-                                        <input type="text" class="form-control" name="username" id="username" placeholder="Username" data-mask="[a-zA-Z0-1\.]+" data-is-regex="true" autocomplete="off" /> 
-                                        <span class="input-group-addon " style="color:white">@mail.com</span>
+                                        <div class="input-group-addon"> <i class="entypo-phone"></i> </div> 
+                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone Number" data-mask="phone" autocomplete="off" /> 
                                     </div> 
-                                </div> 
+                                </div>
                                 <div class="form-group"> 
-                                <div class="input-group"> 
+                                    <div class="input-group"> 
                                         <div class="input-group-addon"> <i class="entypo-lock"></i> </div> 
                                         <input type="password" class="form-control" name="password" id="password" placeholder="Choose Password" autocomplete="off" /> 
                                     </div> 
@@ -97,12 +106,10 @@ if(!isset($_SESSION['login_user'])){
                                     </div> 
                                 </div> 
                                 <div class="form-group"> 
-                                    <!-- <button type="submit" name="sign_up_btn" class="btn btn-success btn-block btn-login"> 
+                                     <button type="submit" name="sign_up_btn" class="btn btn-success btn-block btn-login"> 
                                         <i class="entypo-right-open-mini"></i>Complete Registration
-                                    </button>  -->
-                                    <a href="inbox.php" name="sign_up_btn" class="btn btn-success btn-block btn-login" style="color:white"> 
-                                        <i class="entypo-right-open-mini"></i>Complete Registration
-                                    </a> 
+                                    </button>  
+                                  
                                 </div> 
                                 <div class="form-group">Step 2 of 2</div> 
                             </div> 

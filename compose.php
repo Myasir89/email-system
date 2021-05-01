@@ -1,6 +1,11 @@
-<!DOCTYPE html> <html lang="en"> 
+<?php
+    include('support/session.php');
+    include('support/write_email.php');
+?>
+<!DOCTYPE html> 
 
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<html lang="en"> 
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <head> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
         <meta charset="utf-8"> 
@@ -30,47 +35,48 @@
                 <div class="mail-env" style="background-color: white"> 
                     <!-- compose new email button --> 
                     <div class="mail-sidebar-row visible-xs"> 
-                        <a href="compose.php" class="btn btn-success btn-icon btn-block">Compose Mail<i class="entypo-pencil"></i> </a> 
+                        <a href="#" class="btn btn-success btn-icon btn-block">Compose Mail<i class="entypo-pencil"></i> </a> 
                     </div> 
                     <!-- Mail Box --> 
-                    <div class="mail-body">
-                        <!-- Mail Header --> 
-                        <div class="mail-header"> 
-                            <div class="mail-title">Compose Mail <i class="entypo-pencil"></i> </div> 
-                            <div class="mail-links"> 
-                                <a href="#" class="btn btn-default"> <i class="entypo-cancel"></i> </a> 
-                                <a href="#" class="btn btn-default btn-icon">Draft<i class="entypo-tag"></i> </a> 
-                                <a class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </a> 
-                            </div> 
-                        </div> 
-                        <!-- Mail Body --> 
-                        <div class="mail-compose"> 
-                            <form method="post" role="form"> 
+                    <div class="mail-body"> 
+                        <?php if(isset($error)){ ?>
+                            <div class="alert alert-danger"><?php echo $error; ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        <?php } ?> 
+                        <?php if(isset($success)){ ?>
+                            <div class="alert alert-success"><?php echo $success; ?>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                        <?php } ?>                                               
+                        <form method="post" action="" role="form" name="compose_mail" onSubmit="return validateForm()"> 
+                            <div class="mail-header"> 
+                                <div class="mail-title">Compose Mail <i class="entypo-pencil"></i> </div> 
+                                <div class="mail-links"> 
+                                    <a href="#" class="btn btn-default"> <i class="entypo-cancel"></i> </a> 
+                                    <a href="#" class="btn btn-default btn-icon">Draft<i class="entypo-tag"></i> </a> 
+                                    <button type="submit" name="send" id="send" disabled class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </button> 
+                                </div> 
+                            </div>                            
+                            <div class="mail-compose">                         
                                 <div class="form-group"> 
                                     <label for="to">To:</label> 
-                                    <input type="text" class="form-control" id="to" tabindex="1" /> 
-                                    <div class="field-options"> 
-                                        <a href="javascript:;" onclick="$(this).hide(); $('#cc').parent().removeClass('hidden'); $('#cc').focus();">CC</a> 
-                                        <a href="javascript:;" onclick="$(this).hide(); $('#bcc').parent().removeClass('hidden'); $('#bcc').focus();">BCC</a> 
-                                    </div> 
-                                </div> 
-                                <div class="form-group hidden"> 
-                                    <label for="cc">CC:</label> 
-                                    <input type="text" class="form-control" id="cc" tabindex="2" /> 
-                                </div> 
-                                <div class="form-group hidden"> 
-                                    <label for="bcc">BCC:</label> 
-                                    <input type="text" class="form-control" id="bcc" tabindex="2" /> 
-                                </div> 
+                                    <input type="text" data-mask="email" class="form-control" id="to" name="to" tabindex="1" onchange="onChangedFunction()"  /> 
+                                
+                                </div>                                 
                                 <div class="form-group"> 
                                     <label for="subject">Subject:</label> 
-                                    <input type="text" class="form-control" id="subject" tabindex="1" /> 
+                                    <input type="text" class="form-control" id="subject" name="email_subject" tabindex="1" /> 
                                 </div> 
                                 <div class="compose-message-editor"> 
-                                    <textarea class="form-control wysihtml5" data-stylesheet-url="https://demo.neontheme.com/assets/css/wysihtml5-color.css" name="sample_wysiwyg" id="sample_wysiwyg"></textarea> 
-                                </div> 
-                            </form> 
-                        </div> 
+                                    <textarea class="form-control wysihtml5" data-stylesheet-url="https://demo.neontheme.com/assets/css/wysihtml5-color.css" name="email_body" id="email_body"></textarea> 
+                                </div>                             
+                            </div> 
+                        </form> 
                     </div> 
                     <!-- Sidebar --> 
                     <?php include ('sidebar.php') ?> 
@@ -92,10 +98,17 @@
         <script src="assets/js/wysihtml5/bootstrap-wysihtml5.js" id="script-resource-9"></script> 
         <script src="assets/js/neon-chat.js" id="script-resource-10"></script> 
         <!-- JavaScripts initializations and stuff --> 
+        <script src="assets/js/neon-mail.js" id="script-resource-14"></script> 
         <script src="assets/js/neon-custom.js" id="script-resource-11"></script> 
         <!-- Demo Settings --> 
         <script src="assets/js/neon-demo.js" id="script-resource-12"></script> 
         <script src="assets/js/neon-skins.js" id="script-resource-13"></script> 
+        <script>
+            function onChangedFunction() {
+                document.getElementById("send").disabled = false;
+                document.getElementById("send").classList.add('btn-success');                           
+            }                     
+        </script>        
         <script type="text/javascript">
             var _gaq = _gaq || [];
             _gaq.push(['_setAccount', 'UA-28991003-7']);

@@ -19,20 +19,15 @@ $res_e = mysqli_query($con, $sql_e);
     $error = "Username already taken";     
   }
   else{
-
     $sql = "INSERT INTO `user`(`username`, `email`, `full_name`, `phone`, `password`) 
     VALUES ('$username', '$email', '$name', '$phone', '$password')";
     if (mysqli_query($con, $sql)) {
-      $error = "Account created successfully";   
+      $success = "Account created successfully";   
     }
     else{
          echo mysqli_error($con);
-    } 
-    
-    
-}
-
-
+    }       
+  }
 
 }
 ?>

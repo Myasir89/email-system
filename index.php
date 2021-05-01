@@ -1,8 +1,8 @@
 <?php 
 
 include('support/login.php'); 
-if(isset($_SESSION["username"])){
-header('Location: inbox.php');
+if(isset($_SESSION["login_user"])){
+    header('Location: inbox.php');
 }
 ?>
 
@@ -64,7 +64,7 @@ header('Location: inbox.php');
                             </div> 
                         </div> 
                         <div class="form-group"> 
-                            <button type="submit" name="login" class="btn btn-primary btn-block btn-login"> 
+                            <button type="submit" name="login"class="btn btn-primary btn-block btn-login"> 
                                 <i class="entypo-login"></i>Login In
                             </button>                         
                         </div> 

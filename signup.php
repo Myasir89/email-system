@@ -45,7 +45,7 @@ if(!isset($_SESSION['login_user'])){
                 <div class="login-content"> 
                     <form method="post" name="form_register" role="form" method="POST" action="" id="form_register"> 
                     <?php if(isset($success)){ ?>
-                        <div class="alert alert-success">
+                        <div class="alert alert-success"><?php echo $success; ?>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>

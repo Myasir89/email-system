@@ -13,7 +13,7 @@ var neonMail = neonMail || {};
 	$(document).ready(function()
 	{
 		neonMail.$container = $(".mail-env");
-		
+
 		$.extend(neonMail, {
 			isPresent: neonMail.$container.length > 0
 		});

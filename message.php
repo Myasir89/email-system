@@ -1,3 +1,6 @@
+<?php
+    include('support/session.php');
+?>
 <!DOCTYPE html> 
 
 <html lang="en"> 

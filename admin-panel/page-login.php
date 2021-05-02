@@ -33,14 +33,14 @@
 								<div class="logo text-center"><img src="assets/img/logo-dark.png" alt="Klorofil Logo"></div>
 								<p class="lead">Login to your account</p>
 							</div>
-							<form class="form-auth-small" action="index.php">
+							<form class="form-auth-small" action="support/login.php" method="post">
 								<div class="form-group">
 									<label for="signin-email" class="control-label sr-only">Email</label>
-									<input type="email" class="form-control" id="signin-email" value="samuel.gold@domain.com" placeholder="Email">
+									<input type="email" name="email" class="form-control" id="signin-email" placeholder="Email">
 								</div>
 								<div class="form-group">
 									<label for="signin-password" class="control-label sr-only">Password</label>
-									<input type="password" class="form-control" id="signin-password" value="thisisthepassword" placeholder="Password">
+									<input type="password" name="password" class="form-control" id="signin-password" placeholder="Password">
 								</div>
 								<div class="form-group clearfix">
 									<label class="fancy-checkbox element-left">
@@ -48,9 +48,12 @@
 										<span>Remember me</span>
 									</label>
 								</div>
-								<button type="submit" class="btn btn-primary btn-lg btn-block">LOGIN</button>
+								<button name="login" class="btn btn-primary btn-lg btn-block">LOGIN</button>
 								<div class="bottom">
 									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">Forgot password?</a></span>
+								</div>
+								<div class="bottom">
+									<span class="helper-text"><i class="fa fa-account"></i>Dont Have an account ? <a href="signup.php">Click Here</a></span>
 								</div>
 							</form>
 						</div>

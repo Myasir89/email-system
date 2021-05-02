@@ -1,3 +1,7 @@
+<?php
+include('support/connection.php');
+
+?>
 <?php include ('header.php')  ?>
 <?php include ('sidebar.php')  ?>
 		<!-- MAIN -->

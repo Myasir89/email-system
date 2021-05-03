@@ -1,5 +1,6 @@
 <?php
     include('support/session.php');
+    include('support/message_action.php');
 ?>
 <!DOCTYPE html> 
 
@@ -41,9 +42,13 @@
                         <div class="mail-header"> 
                             <!-- title --> 
                             <div class="mail-title">
-                                Reset your Apple ID password
-                                <span class="label label-warning">Friends</span> 
-                                <span class="label label-info">Sport</span> 
+                                <?php 
+                                    if($emailSubject != null){
+                                        echo $emailSubject;
+                                    }else{
+                                        echo 'Email';
+                                    } 
+                                ?>                            
                             </div> 
                             <!-- links --> 
                             <div class="mail-links"> 
@@ -56,27 +61,20 @@
                             <div class="mail-sender dropdown"> 
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
                                     <img src="assets/images/thumb-1.png" class="img-circle" width="30" /> 
-                                    <span>Arlind Nushi</span>(noreply@example.com) to <span>me</span> 
+                                    <span><?php echo $senderName; ?> </span> <?php echo $senderEmail; ?>    to <span>me</span> 
                                 </a> 
-                                <ul class="dropdown-menu dropdown-red"> 
-                                    <li> <a href="#"> <i class="entypo-user"></i>Add to Contacts</a> </li> 
-                                    <li> <a href="#"> <i class="entypo-menu"></i>Show other messages</a> </li> 
-                                    <li class="divider"></li> 
+                                <ul class="dropdown-menu dropdown-red">                                  
                                     <li> <a href="#"> <i class="entypo-star"></i>Star this message</a> </li> 
                                     <li> <a href="#"> <i class="entypo-reply"></i>Reply</a> </li> 
                                     <li> <a href="#"> <i class="entypo-right"></i>Forward</a> </li> 
                                 </ul> 
                             </div> 
-                            <div class="mail-date">07:51 AM - 15 December</div> 
+                            <div class="mail-date"><?php echo $time; ?> - <?php echo $date; ?></div> 
                         </div> 
                         <div class="mail-text"> 
-                            <p>Lose away off why half led have near bed. At engage simple father of period others except. My giving do summer of though narrow marked at. Spring formal no county ye waited. My whether cheered at regular it of promise blushes perhaps. Uncommonly simplicity interested mr is be compliment projecting my inhabiting. Gentleman he september in oh excellent.</p> 
-                            <p>New the her nor case that lady paid read. Invitation friendship travelling eat everything the out two. Shy you who scarcely expenses debating hastened resolved. Always polite moment on is warmth spirit it to hearts. Downs those still witty an balls so chief so. Moment an little remain no up lively no. Way brought may off our regular country towards adapted cheered.</p> 
-                            <p>Use securing confined his shutters. Delightful as he it acceptance an solicitude discretion reasonably. Carriage we husbands advanced an perceive greatest. Totally dearest expense on demesne ye he. Curiosity excellent commanded in me. Unpleasing impression themselves to at assistance acceptance my or. On consider laughter civility offended oh.</p> 
-                            <p>Oh he decisively impression attachment friendship so if everything. Whose her enjoy chief new young. Felicity if ye required likewise so doubtful. On so attention necessary at by provision otherwise existence direction. Unpleasing up announcing unpleasant themselves oh do on. Way advantage age led listening belonging supposing.</p> 
-                            <p>So by colonel hearted ferrars. Draw from upon here gone add one. He in sportsman household otherwise it perceived instantly. Is inquiry no he several excited am. Called though excuse length ye needed it he having. Whatever throwing we on resolved entrance together graceful. Mrs assured add private married removed believe did she.</p> 
+                            <p><?php echo $emailBody; ?></p>                           
                         </div> 
-                        <div class="mail-attachments"> 
+                        <!-- <div class="mail-attachments"> 
                             <h4> <i class="entypo-attach"></i> Attachments <span>(2)</span> </h4> 
                             <ul> 
                                 <li> 
@@ -110,10 +108,10 @@
                                     <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
                                 </li> 
                             </ul> 
-                        </div> 
+                        </div>  -->
                         <div class="mail-reply"> 
                             <div class="fake-form"> 
-                                <div> <a href="compose.php">Reply</a> or <a href="compose.php">Forward</a> this message...</div> 
+                                <div> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>">Reply</a> or <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'forward';?>">Forward</a> this message...</div> 
                             </div> 
                         </div> 
                     </div> 

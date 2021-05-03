@@ -88,10 +88,10 @@ include('support/sent_action.php');
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
                                         <a href="#" class="star <?php if($favorite == 1){ ?> stared <?php } ?> "> <i class="entypo-star"></i> </a> 
-                                        <a href="message.php" class="col-name"><?php echo "To: ".$reciverName; ?> &nbsp;                                            
+                                        <a href="message.php?id=<?php echo $id; ?>" class="col-name"><?php echo "To: ".$reciverName; ?> &nbsp;                                            
                                         </a> 
                                     </td>                             
-                                    <td class="col-subject"> <a href="message.php"><?php echo $emailSubject; ?></a> </td> 
+                                    <td class="col-subject"> <a href="message.php?id=<?php echo $id; ?>"><?php echo $emailSubject; ?></a> </td> 
                                     <td class="col-time"><?php echo $datetime; ?></td> 
                                 </tr>                           
                             

@@ -89,7 +89,7 @@ include('support/inbox_action.php');
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
                                         <a href="#" class="star <?php if($favorite == 1){ ?> stared <?php } ?> "> <i class="entypo-star"></i> </a> 
-                                        <a href="message.php" class="col-name"><?php echo $sendName; ?> &nbsp; 
+                                        <a href="message.php?id=<?php echo $id; ?>" class="col-name"><?php echo $sendName; ?> &nbsp; 
                                             <?php if($readStatus == 0 && $current_date == $date){  ?>
                                                 <span class="badge badge-danger">new</span>
                                             <?php } ?>

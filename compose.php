@@ -59,22 +59,54 @@
                                 <div class="mail-links"> 
                                     <a href="#" class="btn btn-default"> <i class="entypo-cancel"></i> </a> 
                                     <a href="#" class="btn btn-default btn-icon">Draft<i class="entypo-tag"></i> </a> 
-                                    <button type="submit" name="send" id="send" disabled class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </button> 
+                                    <button type="submit" name="send" id="send" <?php if(isset($status)){ if($status == 'forward'){ ?>  disabled <?php } }else{ ?> disabled <?php } ?> class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </button> 
                                 </div> 
                             </div>                            
-                            <div class="mail-compose">                         
-                                <div class="form-group"> 
-                                    <label for="to">To:</label> 
-                                    <input type="text" data-mask="email" class="form-control" id="to" name="to" tabindex="1" onchange="onChangedFunction()"  /> 
-                                
-                                </div>                                 
-                                <div class="form-group"> 
-                                    <label for="subject">Subject:</label> 
-                                    <input type="text" class="form-control" id="subject" name="email_subject" tabindex="1" /> 
-                                </div> 
-                                <div class="compose-message-editor"> 
-                                    <textarea class="form-control wysihtml5" data-stylesheet-url="https://demo.neontheme.com/assets/css/wysihtml5-color.css" name="email_body" id="email_body"></textarea> 
-                                </div>                             
+                            <div class="mail-compose"> 
+                                <!--Email Field-->                            
+                                <?php if(isset($status) && $status == 'reply'){ ?>                                                           
+                                    <div class="form-group"> 
+                                        <label for="to">To:</label> 
+                                        <input type="text" data-mask="email" class="form-control" id="to" name="to" tabindex="1" value="<?php echo $senderEmail; ?>"  />                                 
+                                    </div>                                     
+                                <?php }else { ?>
+                                    <div class="form-group"> 
+                                        <label for="to">To:</label> 
+                                        <input type="text" data-mask="email" class="form-control" id="to" name="to" tabindex="1" onchange="onChangedFunction()"  />                                 
+                                    </div> 
+                                <?php } ?>  
+
+                                <!--Email Subject--> 
+                                <?php if(isset($status) && $status == 'forward'){ ?>                                                            
+                                    <div class="form-group"> 
+                                        <label for="subject">Subject:</label> 
+                                        <input type="text" class="form-control" id="subject" name="email_subject" value="<?php echo $emailSubject; ?>" tabindex="1" /> 
+                                    </div>                                     
+                                <?php } else { ?>
+                                    <div class="form-group"> 
+                                        <label for="subject">Subject:</label> 
+                                        <input type="text" class="form-control" id="subject" name="email_subject" tabindex="1" /> 
+                                    </div> 
+                                <?php } ?>    
+
+                                <!--Email Body--> 
+                                 <?php if(isset($status) && $status == 'forward'){ ?>                                                            
+                                    <div class="compose-message-editor"> 
+                                        <textarea class="form-control wysihtml5" data-stylesheet-url="https://demo.neontheme.com/assets/css/wysihtml5-color.css" name="email_body" id="email_body">
+                                            ---------- Forwarded message --------- <br>
+                                            From: <?php echo $senderName; ?> < <?php echo $senderEmail; ?> > <br>
+                                            Date: <?php echo $date; ?> at <?php echo $time; ?><br>
+                                            Subject: <?php echo $emailSubject; ?><br>
+                                            To: < <?php echo $userEmail; ?> > <br>
+                                            <br>
+                                            <?php echo $emailBody;?>
+                                        </textarea> 
+                                    </div>                                     
+                                <?php } else { ?>
+                                    <div class="compose-message-editor"> 
+                                        <textarea class="form-control wysihtml5" data-stylesheet-url="https://demo.neontheme.com/assets/css/wysihtml5-color.css" name="email_body" id="email_body"></textarea> 
+                                    </div> 
+                                <?php } ?>                                                                                                                
                             </div> 
                         </form> 
                     </div> 

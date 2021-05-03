@@ -33,5 +33,32 @@ if (isset($_POST['send'])) {
     }    
   }
 
+  if (isset($_GET['status'])) {
+      $status = $_GET['status'];
+      $id = $_GET['id'];
+      $select_ = "SELECT * FROM emails where id = $id";
+      $result_ = mysqli_query($con, $select_);
+      $row = mysqli_fetch_assoc($result_);
+      $senderEmail = $row['senderEmail'];
+      $emailSubject = $row['emailSubject'];  
+      $emailBody = $row['emailBody']; 
+      $read_status = $row['read_status']; 
+      $favorite = $row['favorite']; 
+      $date = $row['date']; 
+      $time = $row['time']; 
+
+      $sql_ = "SELECT `full_name` FROM `user` WHERE email = '$senderEmail'";
+      $res_ = mysqli_query($con, $sql_);
+      $r = mysqli_fetch_assoc($res_); 
+      $senderName = $r['full_name'];
+      // if($status == 'reply'){
+
+      // }
+      // if($status == 'forward'){
+        
+      // }
+  }
+  
+
 
 ?>

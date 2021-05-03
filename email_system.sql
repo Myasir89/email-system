@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 02, 2021 at 09:47 PM
--- Server version: 10.4.18-MariaDB
--- PHP Version: 7.4.16
+-- Generation Time: May 03, 2021 at 09:39 PM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.2.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -39,8 +39,32 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `email`, `password`) VALUES
 (1, 'yasirrana9002131@gmail.com', '123456');
-(2, 'yasirrana900@gmail.com', '123456');
-(3, 'yasirrana900@gmail.com', '1255456'); 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drafts`
+--
+
+CREATE TABLE `drafts` (
+  `id` int(11) NOT NULL,
+  `senderID` int(11) NOT NULL,
+  `senderEmail` varchar(250) NOT NULL,
+  `emailSubject` mediumtext NOT NULL,
+  `emailBody` longtext NOT NULL,
+  `receiverID` int(11) NOT NULL,
+  `receiverEmail` varchar(250) NOT NULL,
+  `date` varchar(50) NOT NULL DEFAULT current_timestamp(),
+  `time` varchar(50) NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `drafts`
+--
+
+INSERT INTO `drafts` (`id`, `senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`) VALUES
+(3, 56, 'noorulan45@gmail.com', '', 'my email', 0, '', 'May 03', '11:27:58 PM');
+
 -- --------------------------------------------------------
 
 --
@@ -71,10 +95,13 @@ INSERT INTO `emails` (`id`, `senderID`, `senderEmail`, `emailSubject`, `emailBod
 (13, 54, 'yasir12@gmail.com', 'email', 'dfgfhjgf', 56, 'noorulan45@gmail.com', 'May 01', '04:31:00 PM', 0, 0),
 (14, 56, 'noorulan45@gmail.com', 'Third Email', 'Hello', 54, 'yasir12@gmail.com', 'May 01', '04:38:30 PM', 1, 0),
 (15, 56, 'noorulan45@gmail.com', 'Email', 'hello', 54, 'yasir12@gmail.com', 'May 01', '04:42:42 PM', 0, 0),
-(16, 54, 'yasir12@gmail.com', '', 'Hello', 56, 'noorulan45@gmail.com', 'May 01', '04:46:31 PM', 0, 0),
+(16, 54, 'yasir12@gmail.com', '', 'Hello', 56, 'noorulan45@gmail.com', 'May 01', '04:46:31 PM', 1, 0),
 (18, 56, 'noorulan45@gmail.com', 'Emails', 'Hello', 54, 'yasir12@gmail.com', 'May 01', '11:57:01 PM', 0, 0),
-(19, 54, 'yasir12@gmail.com', 'My first email', 'Hello', 56, 'noorulan45@gmail.com', 'May 02', '12:28:59 AM', 0, 0),
-(20, 56, 'noorulan45@gmail.com', 'My First Email', 'Hello', 54, 'yasir12@gmail.com', 'May 02', '12:29:46 AM', 0, 0);
+(19, 54, 'yasir12@gmail.com', 'My first email', 'Hello', 56, 'noorulan45@gmail.com', 'May 02', '12:28:59 AM', 1, 0),
+(20, 56, 'noorulan45@gmail.com', 'My First Email', 'Hello', 54, 'yasir12@gmail.com', 'May 02', '12:29:46 AM', 0, 0),
+(22, 56, 'noorulan45@gmail.com', 'My first email', '---------- Forwarded message --------- <br>\r\n                                            From: Bashir &lt; yasir12@gmail.com &gt; <br>\r\n                                            Date: May 02 at 12:28:59 AM<br>\r\n                                            Subject: My first email<br>\r\n                                            To: &lt; noorulan45@gmail.com &gt; <br>\r\n                                            <br>\r\n                                            Hello', 54, 'yasir12@gmail.com', 'May 03', '12:26:01 AM', 1, 0),
+(24, 56, 'noorulan45@gmail.com', 'draft email', 'email', 54, 'yasir12@gmail.com', 'May 04', '12:37:30 AM', 0, 0),
+(25, 56, 'noorulan45@gmail.com', 'Draft test', 'new email', 54, 'yasir12@gmail.com', 'May 04', '12:38:11 AM', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -105,9 +132,9 @@ INSERT INTO `user` (`id`, `username`, `email`, `full_name`, `phone`, `password`)
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `drafts`
 --
-ALTER TABLE `admin`
+ALTER TABLE `drafts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -128,16 +155,16 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT for table `drafts`
 --
-ALTER TABLE `admin`
-  MODIFY `id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `drafts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `emails`
 --
 ALTER TABLE `emails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `user`

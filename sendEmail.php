@@ -64,6 +64,7 @@ include('support/sent_action.php');
                         <!-- email list --> 
                         <tbody> 
                             <?php 
+                                if(mysqli_num_rows($result) > 0){
                                  while($row = $result->fetch_assoc()){ 
                                     $id =  $row['id'];                                      
                                     $date = $row['date'];
@@ -95,6 +96,11 @@ include('support/sent_action.php');
                                     <td class="col-time"><?php echo $datetime; ?></td> 
                                 </tr>                           
                             
+                            <?php } }else{ ?>
+                                <tr>
+                                    <td><td>
+                                    <td><div style="text-align:center">No conversations in Sent.</div><td>
+                                </tr>
                             <?php } ?>
                         </tbody> 
                         <tfoot> 

@@ -1,6 +1,6 @@
 <?php
     include('support/session.php');
-    include('support/write_email.php');
+    include('support/draft_action.php');
 ?>
 <!DOCTYPE html> 
 
@@ -59,15 +59,15 @@
                                 <div class="mail-links"> 
                                     <button href="#" class="btn btn-default"> <i class="entypo-cancel"></i> </button> 
                                     <button type="submit" name="draft" id="draft" class="btn btn-default btn-icon">Draft<i class="entypo-tag"></i> </button> 
-                                    <button type="submit" name="send" id="send" <?php if(isset($status)){ if($status == 'forward'){ ?>  disabled <?php } }else{ ?> disabled <?php } ?> class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </button> 
+                                    <button type="submit" name="send" id="send" <?php if($receiverEmail == ''){  ?>  disabled  <?php } ?> class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </button> 
                                 </div> 
                             </div>                            
                             <div class="mail-compose"> 
                                 <!--Email Field-->                            
-                                <?php if(isset($status) && $status == 'reply'){ ?>                                                           
+                                <?php if($receiverEmail != ''){ ?>                                                           
                                     <div class="form-group"> 
                                         <label for="to">To:</label> 
-                                        <input type="text" data-mask="email" class="form-control" id="to" name="to" tabindex="1" value="<?php echo $senderEmail; ?>"  />                                 
+                                        <input type="text" data-mask="email" class="form-control" id="to" name="to" tabindex="1" value="<?php echo $receiverEmail; ?>"  />                                 
                                     </div>                                     
                                 <?php }else { ?>
                                     <div class="form-group"> 
@@ -76,37 +76,18 @@
                                     </div> 
                                 <?php } ?>  
 
-                                <!--Email Subject--> 
-                                <?php if(isset($status) && $status == 'forward'){ ?>                                                            
-                                    <div class="form-group"> 
-                                        <label for="subject">Subject:</label> 
-                                        <input type="text" class="form-control" id="subject" name="email_subject" value="<?php echo $emailSubject; ?>" tabindex="1" /> 
-                                    </div>                                     
-                                <?php } else { ?>
-                                    <div class="form-group"> 
-                                        <label for="subject">Subject:</label> 
-                                        <input type="text" class="form-control" id="subject" name="email_subject" tabindex="1" /> 
-                                    </div> 
-                                <?php } ?>    
+                                <!--Email Subject-->                                                                                        
+                                <div class="form-group"> 
+                                    <label for="subject">Subject:</label> 
+                                    <input type="text" class="form-control" id="subject" name="email_subject" value="<?php echo $emailSubject; ?>" tabindex="1" /> 
+                                </div>                                                                   
 
-                                <!--Email Body--> 
-                                 <?php if(isset($status) && $status == 'forward'){ ?>                                                            
-                                    <div class="compose-message-editor"> 
-                                        <textarea class="form-control wysihtml5" data-stylesheet-url="https://demo.neontheme.com/assets/css/wysihtml5-color.css" name="email_body" id="email_body">
-                                            ---------- Forwarded message --------- <br>
-                                            From: <?php echo $senderName; ?> < <?php echo $senderEmail; ?> > <br>
-                                            Date: <?php echo $date; ?> at <?php echo $time; ?><br>
-                                            Subject: <?php echo $emailSubject; ?><br>
-                                            To: < <?php echo $userEmail; ?> > <br>
-                                            <br>
-                                            <?php echo $emailBody;?>
-                                        </textarea> 
-                                    </div>                                     
-                                <?php } else { ?>
-                                    <div class="compose-message-editor"> 
-                                        <textarea class="form-control wysihtml5" data-stylesheet-url="https://demo.neontheme.com/assets/css/wysihtml5-color.css" name="email_body" id="email_body"></textarea> 
-                                    </div> 
-                                <?php } ?>                                                                                                                
+                                <!--Email Body-->                                                                                         
+                                <div class="compose-message-editor"> 
+                                    <textarea class="form-control wysihtml5" data-stylesheet-url="https://demo.neontheme.com/assets/css/wysihtml5-color.css" name="email_body" id="email_body">                                            
+                                        <?php echo $emailBody;?>
+                                    </textarea> 
+                                </div>                                                                                                                                                                                   
                             </div> 
                         </form> 
                     </div> 

@@ -53,7 +53,7 @@
                             <!-- links --> 
                             <div class="mail-links"> 
                                 <a href="#" class="btn btn-default"> <i class="entypo-print"></i> </a> 
-                                <a href="#" class="btn btn-default"> <i class="entypo-trash"></i> </a> <a class="btn btn-primary btn-icon">Reply<i class="entypo-reply"></i> </a> 
+                                <a href="#" class="btn btn-default"> <i class="entypo-trash"></i> </a> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>" class="btn btn-primary btn-icon">Reply<i class="entypo-reply"></i> </a> 
                             </div> 
                         </div> 
 
@@ -65,8 +65,8 @@
                                 </a> 
                                 <ul class="dropdown-menu dropdown-red">                                  
                                     <li> <a href="#"> <i class="entypo-star"></i>Star this message</a> </li> 
-                                    <li> <a href="#"> <i class="entypo-reply"></i>Reply</a> </li> 
-                                    <li> <a href="#"> <i class="entypo-right"></i>Forward</a> </li> 
+                                    <li> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>"> <i class="entypo-reply"></i>Reply</a> </li> 
+                                    <li> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'forward';?>"> <i class="entypo-right"></i>Forward</a> </li> 
                                 </ul> 
                             </div> 
                             <div class="mail-date"><?php echo $time; ?> - <?php echo $date; ?></div> 

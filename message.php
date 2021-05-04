@@ -39,81 +39,87 @@
                     </div> 
                     <!-- Mail Body -->
                     <div class="mail-body"> 
-                        <div class="mail-header"> 
-                            <!-- title --> 
-                            <div class="mail-title">
-                                <?php 
-                                    if($emailSubject != null){
-                                        echo $emailSubject;
-                                    }else{
-                                        echo 'Email';
-                                    } 
-                                ?>                            
+                        <form method="post" action="">
+                            <div class="mail-header"> 
+                                <!-- title --> 
+                                <div class="mail-title">
+                                    <?php 
+                                        if($emailSubject != null){
+                                            echo $emailSubject;
+                                        }else{
+                                            echo 'Email';
+                                        } 
+                                    ?>                            
+                                </div> 
+                                <!-- links --> 
+                                <div class="mail-links">                              
+                                    <button type="submit" name="trash" class="btn btn-danger btn-icon">Trash<i class="entypo-trash"></i> </button> 
+                                    <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>" class="btn btn-primary btn-icon">
+                                        Reply<i class="entypo-reply"></i> 
+                                    </a> 
+                                </div> 
                             </div> 
-                            <!-- links --> 
-                            <div class="mail-links"> 
-                                <a href="#" class="btn btn-default"> <i class="entypo-print"></i> </a> 
-                                <a href="#" class="btn btn-default"> <i class="entypo-trash"></i> </a> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>" class="btn btn-primary btn-icon">Reply<i class="entypo-reply"></i> </a> 
+                            <div class="mail-info"> 
+                                <div class="mail-sender dropdown"> 
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                                        <img src="assets/images/thumb-1.png" class="img-circle" width="30" /> 
+                                        <span><?php echo $senderName; ?> </span> <?php echo $senderEmail; ?>    to <span>me</span> 
+                                    </a> 
+                                    <ul class="dropdown-menu dropdown-red">                                  
+                                        <li> <a href="#"> <i class="entypo-star"></i>Star this message</a> </li> 
+                                        <li> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>"> <i class="entypo-reply"></i>Reply</a> </li> 
+                                        <li> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'forward';?>"> <i class="entypo-right"></i>Forward</a> </li> 
+                                    </ul> 
+                                </div> 
+                                <div class="mail-date"><?php echo $time; ?> - <?php echo $date; ?></div> 
                             </div> 
-                        </div> 
-
-                        <div class="mail-info"> 
-                            <div class="mail-sender dropdown"> 
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                                    <img src="assets/images/thumb-1.png" class="img-circle" width="30" /> 
-                                    <span><?php echo $senderName; ?> </span> <?php echo $senderEmail; ?>    to <span>me</span> 
-                                </a> 
-                                <ul class="dropdown-menu dropdown-red">                                  
-                                    <li> <a href="#"> <i class="entypo-star"></i>Star this message</a> </li> 
-                                    <li> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>"> <i class="entypo-reply"></i>Reply</a> </li> 
-                                    <li> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'forward';?>"> <i class="entypo-right"></i>Forward</a> </li> 
+                            <div class="mail-text"> 
+                                <p><?php echo $emailBody; ?></p>                           
+                            </div> 
+                            <!-- <div class="mail-attachments"> 
+                                <h4> <i class="entypo-attach"></i> Attachments <span>(2)</span> </h4> 
+                                <ul> 
+                                    <li> 
+                                        <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
+                                        <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
+                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
+                                    </li> 
+                                    <li> 
+                                        <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
+                                        <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
+                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
+                                    </li> 
+                                    <li> 
+                                        <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
+                                        <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
+                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div>
+                                    </li> 
+                                    <li> 
+                                        <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
+                                        <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
+                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
+                                    </li> 
+                                    <li> 
+                                        <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
+                                        <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
+                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
+                                    </li> 
+                                    <li> 
+                                        <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
+                                        <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
+                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
+                                    </li> 
                                 </ul> 
+                            </div>  -->
+                            <div class="mail-reply"> 
+                                <div class="fake-form"> 
+                                    <div> 
+                                        <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>">Reply</a> or 
+                                        <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'forward';?>">Forward</a> this message...
+                                    </div> 
+                                </div> 
                             </div> 
-                            <div class="mail-date"><?php echo $time; ?> - <?php echo $date; ?></div> 
-                        </div> 
-                        <div class="mail-text"> 
-                            <p><?php echo $emailBody; ?></p>                           
-                        </div> 
-                        <!-- <div class="mail-attachments"> 
-                            <h4> <i class="entypo-attach"></i> Attachments <span>(2)</span> </h4> 
-                            <ul> 
-                                <li> 
-                                    <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
-                                    <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
-                                    <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                </li> 
-                                <li> 
-                                    <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
-                                    <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
-                                    <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                </li> 
-                                <li> 
-                                    <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
-                                    <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
-                                    <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div>
-                                </li> 
-                                <li> 
-                                    <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
-                                    <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
-                                    <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                </li> 
-                                <li> 
-                                    <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
-                                    <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
-                                    <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                </li> 
-                                <li> 
-                                    <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
-                                    <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
-                                    <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                </li> 
-                            </ul> 
-                        </div>  -->
-                        <div class="mail-reply"> 
-                            <div class="fake-form"> 
-                                <div> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>">Reply</a> or <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'forward';?>">Forward</a> this message...</div> 
-                            </div> 
-                        </div> 
+                        </form>
                     </div> 
                     <!-- Sidebar -->  
                     <?php include ('sidebar.php') ?>

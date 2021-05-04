@@ -25,6 +25,34 @@ if (isset($_GET['status'])) {
 
 }
 
+if (isset($_POST['trash'])) {
+    $id = $_GET['id'];
+    $select_1 = "SELECT * FROM drafts where id = $id";
+    $result_1 = mysqli_query($con, $select_1);
+    $row = mysqli_fetch_assoc($result_1);
+    $senderEmail = $row['senderEmail'];
+    $senderID = $row['senderID'];
+    $emailSubject = $row['emailSubject'] == '' ? "(no subject)" : $row['emailSubject'];  
+    $emailBody = $row['emailBody'];
+    $receiverEmail = $row['receiverEmail'];
+    $receiverID = $row['receiverID']; 
+    $date = $row['date']; 
+    $time = $row['time']; 
+    $sql = "INSERT INTO `trash`(`senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
+          ('$senderID', '$senderEmail', '$emailSubject', '$emailBody', '$receiverID', '$receiverEmail', '$date', '$time', 'draft')";
+    if (mysqli_query($con, $sql)) {
+        $sql_d = "DELETE FROM `drafts` WHERE id = '$id'";
+        if (mysqli_query($con, $sql_d)) {
+          header('location: drafts.php');
+        }       
+    }
+    else{
+          echo mysqli_error($con);
+    }
+
+
+}
+
 if (isset($_POST['send'])) {
     if($_POST['to'] != "" && $_POST['to'] != $userEmail){      
     $timezone = new DateTime("now", new DateTimeZone('Asia/Karachi') );

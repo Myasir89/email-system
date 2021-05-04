@@ -1,6 +1,9 @@
 <?php
+include('support/connection.php');
 include('support/session.php');
+include('support/trash_action.php');
 ?>
+
 <!DOCTYPE html> 
 
 <html lang="en"> 
@@ -14,7 +17,7 @@ include('support/session.php');
         <script>
             window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'UA-141030632-1', {"groups":"laborator_analytics","link_attribution":true,"linker":{"accept_incoming":true,"domains":["laborator.co","kaliumtheme.com","oxygentheme.com","neontheme.com","themeforest.net","laborator.ticksy.com"]}});
         </script> 
-        <title>Mailbox</title> 
+        <title>Mailbox | Trash</title> 
         <link rel="stylesheet" href="assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css" id="style-resource-1"> 
         <link rel="stylesheet" href="assets/css/font-icons/entypo/css/entypo.css" id="style-resource-2"> 
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic" id="style-resource-3"> 
@@ -34,12 +37,12 @@ include('support/session.php');
                 <div class="mail-env" style="background-color: white"> 
                     <!-- compose new email button -->
                     <div class="mail-sidebar-row visible-xs"> 
-                        <a href="compose.php" class="btn btn-success btn-icon btn-block">Compose Mail<i class="entypo-pencil"></i> </a> 
+                        <a href="compose_draft.php" class="btn btn-success btn-icon btn-block">Compose Mail<i class="entypo-pencil"></i> </a> 
                     </div> 
                     <!-- Mail Body --> 
                     <div class="mail-body"> <div class="mail-header"> 
-                        <!-- title --> 
-                        <h3 class="mail-title">Trash<span class="count">(6)</span> </h3> 
+                        <!-- title <span class="count">(6)</span>--> 
+                        <h3 class="mail-title">Draft </h3> 
 
                         <!-- search --> 
                         <form method="get" role="form" class="mail-search"> 
@@ -55,159 +58,64 @@ include('support/session.php');
                         <thead> 
                             <tr> 
                                 <th width="5%"> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </th> 
-                                <th colspan="4"> <div class="mail-select-options">Mark as Read</div> <div class="mail-pagination" colspan="2"> <strong>1-30</strong> <span>of 789</span> <div class="btn-group"> <a href="#" class="btn btn-sm btn-white"><i class="entypo-left-open"></i></a> <a href="#" class="btn btn-sm btn-white"><i class="entypo-right-open"></i></a> </div> </div> </th> 
+                                <th colspan="4"> 
+                                    <div class="mail-select-options">Mark as Read</div> 
+                                    <div class="mail-pagination" colspan="2"> 
+                                        <strong>1-30</strong> <span>of 789</span> 
+                                        <div class="btn-group"> 
+                                            <a href="#" class="btn btn-sm btn-white"><i class="entypo-left-open"></i></a> 
+                                            <a href="#" class="btn btn-sm btn-white"><i class="entypo-right-open"></i></a> 
+                                        </div> 
+                                    </div> 
+                                </th> 
                             </tr> 
                         </thead>
                         <!-- email list --> 
                         <tbody> 
-                            <tr class="unread">
-                                <!-- new email class: unread --> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star stared"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Facebook</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Reset your account password</a> </td> <td class="col-options"> <a href="message.php"><i class="entypo-attach"></i></a> </td> <td class="col-time">13:52</td> </tr> <tr> <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Google AdWords</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Google AdWords: Ads not serving</a> </td> 
-                                <td class="col-options"></td> <td class="col-time">09:27</td> </tr> <tr> <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Apple.com</a> </td> <td class="col-subject"> <a href="message.php"> <span class="label label-danger">Business</span>Your apple account ID has been accessed from un-familiar location.</a> </td> 
-                                <td class="col-options"></td> 
-                                <td class="col-time">Today</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">World Weather Online</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Over Throttle Alert</a> </td> 
-                                <td class="col-options"> <a href="message.php"><i class="entypo-attach"></i></a> </td> 
-                                <td class="col-time">Yesterday</td> 
-                            </tr> 
-                            <tr class="unread"> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Dropbox</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Complete your Dropbox setup!</a> </td> 
-                                <td class="col-options"></td> 
-                                <td class="col-time">4 Dec</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star stared"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Arlind Nushi</a> </td> 
-                                <td class="col-subject"> <a href="message.php"> <span class="label label-warning">Friends</span>Work progress for Neon Project</a> </td> 
-                                <td class="col-options"></td> <td class="col-time">28 Nov</td> 
-                            </tr> 
-                            <tr class="unread">
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star stared"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Jose D. Gardner</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Regarding to your website issues.</a> </td> 
-                                <td class="col-options"> <a href="message.php"><i class="entypo-attach"></i></a> </td> 
-                                <td class="col-time">22 Nov</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Aurelio D. Cummins</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Steadicam operator</a> </td> 
-                                <td class="col-options"></td> 
-                                <td class="col-time">15 Nov</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Filan Fisteku</a> </td> 
-                                <td class="col-subject"> <a href="message.php">You are loosing clients because your website is not responsive.</a> </td> 
-                                <td class="col-options"></td> 
-                                <td class="col-time">02 Nov</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Instagram</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Instagram announces the new video uploadin feature.</a> </td> 
-                                <td class="col-options"> <a href="message.php"><i class="entypo-attach"></i></a> </td> 
-                                <td class="col-time">26 Oct</td> 
-                            </tr> 
-                            <tr class="unread"> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">James Blue</a> </td> 
-                                <td class="col-subject"> <a href="message.php"> <span class="label label-info">Sports</span>There are 20 notifications</a> </td> <td class="col-options"></td> 
-                                <td class="col-time">18 Oct</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">SomeHost</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Bugs in your system.</a> </td> 
-                                <td class="col-options"></td> <td class="col-time">01 Sep</td> 
-                            </tr> 
-                            <tr class="unread">
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star stared"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Facebook</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Reset your account password</a> </td> 
-                                <td class="col-options"> <a href="message.php"><i class="entypo-attach"></i></a> </td> 
-                                <td class="col-time">13:52</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Google AdWords</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Google AdWords: Ads not serving</a> </td> 
-                                <td class="col-options"></td> <td class="col-time">09:27</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Apple.com</a> </td> 
-                                <td class="col-subject"> <a href="message.php"> <span class="label label-danger">Business</span>Your apple account ID has been accessed from un-familiar location.</a> </td> 
-                                <td class="col-options"></td> 
-                                <td class="col-time">Today</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">World Weather Online</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Over Throttle Alert</a> </td> 
-                                <td class="col-options"> <a href="message.php"><i class="entypo-attach"></i></a> </td> 
-                                <td class="col-time">Yesterday</td> 
-                            </tr> 
-                            <tr class="unread"> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Dropbox</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Complete your Dropbox setup!</a> </td> 
-                                <td class="col-options"></td> 
-                                <td class="col-time">4 Dec</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star stared"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Arlind Nushi</a> </td> 
-                                <td class="col-subject"> <a href="message.php"> <span class="label label-warning">Friends</span>Work progress for Neon Project</a> </td> 
-                                <td class="col-options"></td> <td class="col-time">28 Nov</td> 
-                            </tr> 
-                            <tr class="unread">
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star stared"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Jose D. Gardner</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Regarding to your website issues.</a> </td> 
-                                <td class="col-options"> <a href="message.php"><i class="entypo-attach"></i></a> </td> 
-                                <td class="col-time">22 Nov</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Aurelio D. Cummins</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Steadicam operator</a> </td> 
-                                <td class="col-options"></td> <td class="col-time">15 Nov</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Filan Fisteku</a> </td> 
-                                <td class="col-subject"> <a href="message.php">You are loosing clients because your website is not responsive.</a> </td> 
-                                <td class="col-options"></td> <td class="col-time">02 Nov</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">Instagram</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Instagram announces the new video uploadin feature.</a> </td> 
-                                <td class="col-options"> <a href="message.php"><i class="entypo-attach"></i></a> </td> 
-                                <td class="col-time">26 Oct</td> 
-                            </tr> 
-                            <tr class="unread"> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">James Blue</a> </td> 
-                                <td class="col-subject"> <a href="message.php"> <span class="label label-info">Sports</span>There are 20 notifications</a> </td> <td class="col-options"></td> 
-                                <td class="col-time">18 Oct</td> 
-                            </tr> 
-                            <tr> 
-                                <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
-                                <td class="col-name"> <a href="#" class="star"> <i class="entypo-star"></i> </a> <a href="message.php" class="col-name">SomeHost</a> </td> 
-                                <td class="col-subject"> <a href="message.php">Bugs in your system.</a> </td> 
-                                <td class="col-options"></td> <td class="col-time">01 Sep</td> 
-                            </tr> 
+                            <?php
+                                if(mysqli_num_rows($result) > 0){
+                                 while($row = $result->fetch_assoc()){ 
+                                    $id =  $row['id'];                                      
+                                    $date = $row['date'];
+                                    $time = $row['time'];  
+                                    $emailBody = $row['emailBody']; 
+                                    $emailSubject = $row['emailSubject']; 
+                                    $receiverEmail = $row['receiverEmail'];                                                                        
+                                    $timezone = new DateTime("now", new DateTimeZone('Asia/Karachi') );
+                                    $current_date =  $timezone->format('M d');
+                                    if($current_date == $date) {
+                                        $datetime = $time;
+                                    }else{
+                                        $datetime = $date;
+                                    }  
+                                    if($receiverEmail != ''){
+                                        $sql_ = "SELECT `full_name` FROM `user` WHERE email = '$receiverEmail'";
+                                        $result_ = mysqli_query($con, $sql_);
+                                        $r = mysqli_fetch_assoc($result_); 
+                                        $sendName = $r['full_name']; 
+                                    }else{
+                                        $sendName = '';
+                                    }                                                                    
+                            ?>
+                                <tr>
+                                    <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
+                                    <td class="col-name">                                         
+                                        <a href="#" class="star"> <i class="entypo-star"></i> </a> 
+                                        <a href="compose_draft.php?id=<?php echo $id; ?>&status=<?php echo 'draft'?>" class="col-name" style="color:<?php if($sendName==''){ ?> red; <?php }else{ ?> black; <?php } ?>">
+                                            <?php if($sendName==''){ echo 'draft'; }else{ echo $sendName; } ?> 
+                                            &nbsp;                                           
+                                        </a> 
+                                    </td>                             
+                                    <td class="col-subject"> <a href="compose_draft.php?id=<?php echo $id; ?>&status=<?php echo 'draft'?>"><?php if($emailSubject==''){ echo '(no subject)'; }else{ echo $emailSubject; } ?> </a> </td> 
+                                    <td class="col-time"><?php echo $datetime; ?></td> 
+                                </tr>                           
+                            
+                            <?php } }else{ ?>
+                                <tr>
+                                    <td><td>
+                                    <td><div style="text-align:center">No conversations in Draft.</div><td>
+                                </tr>
+                            <?php } ?>
                         </tbody> 
                         <tfoot> 
                             <tr> 

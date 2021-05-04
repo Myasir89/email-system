@@ -57,8 +57,7 @@
                             <div class="mail-header"> 
                                 <div class="mail-title">Compose Mail <i class="entypo-pencil"></i> </div> 
                                 <div class="mail-links"> 
-                                    <button href="#" class="btn btn-default"> <i class="entypo-cancel"></i> </button> 
-                                    <button type="submit" name="draft" id="draft" class="btn btn-default btn-icon">Draft<i class="entypo-tag"></i> </button> 
+                                    <button type="submit" name="trash" class="btn btn-danger btn-icon">Trash<i class="entypo-trash"></i> </button>
                                     <button type="submit" name="send" id="send" <?php if($receiverEmail == ''){  ?>  disabled  <?php } ?> class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </button> 
                                 </div> 
                             </div>                            

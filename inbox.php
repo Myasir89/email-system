@@ -58,7 +58,20 @@ include('support/inbox_action.php');
                         <thead> 
                             <tr> 
                                 <th width="5%"> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </th> 
-                                <th colspan="4"> <div class="mail-select-options">Mark as Read</div> <div class="mail-pagination" colspan="2"> <strong>1-30</strong> <span>of 789</span> <div class="btn-group"> <a href="#" class="btn btn-sm btn-white"><i class="entypo-left-open"></i></a> <a href="#" class="btn btn-sm btn-white"><i class="entypo-right-open"></i></a> </div> </div> </th> 
+                                <th colspan="4"> 
+                                    <div class="mail-select-options">Mark as Read</div> 
+                                    <div class="mail-pagination" colspan="2"> 
+                                        <strong>1-30</strong> <span>of 789</span> 
+                                        <div class="btn-group"> 
+                                            <a href="#" class="btn btn-sm btn-white">
+                                                <i class="entypo-left-open"></i>
+                                            </a> 
+                                            <a href="#" class="btn btn-sm btn-white">
+                                                <i class="entypo-right-open"></i>
+                                            </a> 
+                                        </div>
+                                    </div>
+                                </th> 
                             </tr> 
                         </thead>
                         <!-- email list --> 
@@ -90,13 +103,13 @@ include('support/inbox_action.php');
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
                                         <a href="#" class="star <?php if($favorite == 1){ ?> stared <?php } ?> "> <i class="entypo-star"></i> </a> 
-                                        <a href="message.php?id=<?php echo $id; ?>" class="col-name"><?php echo $sendName; ?> &nbsp; 
+                                        <a href="message.php?id=<?php echo $id; ?>&action=<?php echo 'receiveEmail'; ?>" class="col-name"><?php echo $sendName; ?> &nbsp; 
                                             <?php if($readStatus == 0 && $current_date == $date){  ?>
                                                 <span class="badge badge-danger">new</span>
                                             <?php } ?>
                                         </a> 
                                     </td>                             
-                                    <td class="col-subject"> <a href="message.php"><?php echo $emailSubject; ?></a> </td> 
+                                    <td class="col-subject"> <a href="message.php?id=<?php echo $id; ?>&action=<?php echo 'receiveEmail'; ?>"><?php echo $emailSubject; ?></a> </td> 
                                     <td class="col-time"><?php echo $datetime; ?></td> 
                                 </tr>                           
                             

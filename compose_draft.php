@@ -57,8 +57,14 @@
                             <div class="mail-header"> 
                                 <div class="mail-title">Compose Mail <i class="entypo-pencil"></i> </div> 
                                 <div class="mail-links"> 
-                                    <button type="submit" name="trash" class="btn btn-danger btn-icon">Trash<i class="entypo-trash"></i> </button>
-                                    <button type="submit" name="send" id="send" <?php if($receiverEmail == ''){  ?>  disabled  <?php } ?> class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </button> 
+                                    <?php if(isset($_GET['stat'])) { ?>
+                                        <button type="submit" name="delete" class="btn btn-danger btn-icon">Delete Forever<i class="entypo-trash"></i> </button>
+                                    <?php }else{ ?>
+                                        <button type="submit" name="trash" class="btn btn-danger btn-icon">Trash<i class="entypo-trash"></i> </button>
+                                    <?php } ?>
+                                    <?php if(!isset($_GET['stat'])){ ?>
+                                        <button type="submit" name="send" id="send" <?php if($receiverEmail == ''){  ?>  disabled  <?php } ?>    class="btn btn-success btn-icon">Send<i class="entypo-mail"></i> </button>                             
+                                    <?php } ?>
                                 </div> 
                             </div>                            
                             <div class="mail-compose"> 

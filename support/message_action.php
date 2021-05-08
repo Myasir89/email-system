@@ -1,7 +1,7 @@
 <?php
 include 'connection.php';
 $id= $_GET['id'];
-$action = $_GET['action'];
+$action = isset($_GET['action']);
 $select = "SELECT * FROM emails where id = $id";
 $result = mysqli_query($con, $select);
 $row = mysqli_fetch_assoc($result);
@@ -47,6 +47,39 @@ if (isset($_POST['trash'])) {
              echo mysqli_error($con);
         }       
          
+  }
+
+  if (isset($_GET['stat'])) {
+    $id = $_GET['id'];
+    $select_1 = "SELECT * FROM trash where id = $id";
+    $result_1 = mysqli_query($con, $select_1);
+    $row = mysqli_fetch_assoc($result_1);
+    $receiverEmail = $row['receiverEmail'];
+    $emailSubject = $row['emailSubject'];  
+    $emailBody = $row['emailBody']; 
+    $date = $row['date']; 
+    $time = $row['time']; 
+  
+    if($receiverEmail != ''){
+        $sql_ = "SELECT `full_name` FROM `user` WHERE email = '$receiverEmail'";
+        $res_ = mysqli_query($con, $sql_);
+        $r = mysqli_fetch_assoc($res_); 
+        $receiverName = $r['full_name'];
+    }else{
+        $receiverName = '' ;
+    }
+  
+  }
+
+  if (isset($_POST['delete'])) {
+    $id = $_GET['id'];
+    $sql = "DELETE FROM `trash` WHERE id = '$id'";
+    if (mysqli_query($con, $sql)) {
+      header('location: trashEmails.php');      
+    }
+    else{
+      echo mysqli_error($con);
+    }
   }
 
 ?>

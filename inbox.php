@@ -82,7 +82,6 @@ include('support/inbox_action.php');
                                     $id =  $row['id'];                                      
                                     $date = $row['date'];
                                     $time = $row['time'];
-                                    $favorite = $row['favorite'];
                                     $readStatus = $row['read_status'];
                                     $senderEmail = $row['senderEmail'];                                     
                                     $emailSubject = $row['emailSubject']; 
@@ -102,7 +101,7 @@ include('support/inbox_action.php');
                                 <tr <?php if($readStatus == 0){ ?> class="unread" <?php } ?> >
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
-                                        <a href="#" class="star <?php if($favorite == 1){ ?> stared <?php } ?> "> <i class="entypo-star"></i> </a> 
+                                        <a href="#" class="star stared"> <i class="entypo-star"></i> </a> 
                                         <a href="message.php?id=<?php echo $id; ?>&action=<?php echo 'receiveEmail'; ?>" class="col-name"><?php echo $sendName; ?> &nbsp; 
                                             <?php if($readStatus == 0 && $current_date == $date){  ?>
                                                 <span class="badge badge-danger">new</span>

@@ -1,23 +1,27 @@
 <!-- Sidebar --> 
-<div class="mail-sidebar"> 
+
+<div class="mail-sidebar" > 
     <!-- compose new email button --> 
     <div class="mail-sidebar-row hidden-xs"> 
         <a href="compose.php" class="btn btn-success btn-icon btn-block">Compose Mail<i class="entypo-pencil"></i> </a> 
     </div> 
     <!-- menu --> 
     <ul class="mail-menu"> 
-        <li class="active"> <a href="inbox.php"> <span class="badge badge-danger pull-right">6</span>Inbox</a> </li> 
-        <li> <a href="sendEmail.php"> <span class="badge badge-gray pull-right">1</span>Sent</a> </li> 
+    <!-- <span class="badge badge-danger pull-right">6</span> -->
+    <!-- <span class="badge badge-gray pull-right">1</span> -->
+    <!-- <span class="badge badge-gray pull-right">1</span> -->
+        <li class="active"> <a href="inbox.php"> Inbox</a> </li> 
+        <li> <a href="sendEmail.php"> Sent</a> </li> 
         <li> <a href="drafts.php">Drafts</a> </li> 
-        <li> <a href="spam.php"> <span class="badge badge-gray pull-right">1</span>Spam</a> </li> 
+        <li> <a href="starredEmail.php"> Starred</a> </li> 
         <li> <a href="trashEmails.php">Trash</a> </li> 
     </ul> 
     <div class="mail-distancer"></div> 
-    <h4>Tags</h4> 
+    <h4 style="color:#F9F9F9">Tags</h4> 
     <!-- menu --> 
     <ul class="mail-menu"> 
-        <li> <a href="#"> <span class="badge badge-danger badge-roundless pull-right"></span>Business</a> </li> 
-        <li> <a href="#"> <span class="badge badge-info badge-roundless pull-right"></span>Sports</a> </li> 
-        <li> <a href="#"> <span class="badge badge-warning badge-roundless pull-right"></span>Friends</a> </li> 
-    </ul> 
+        <li> <a href="#" style="color:#F9F9F9"> Business</a> </li> 
+        <li> <a href="#" style="color:#F9F9F9">Sports</a> </li> 
+        <li> <a href="#" style="color:#F9F9F9"> Friends</a> </li> 
+    </ul>  
 </div> 

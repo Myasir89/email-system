@@ -52,11 +52,20 @@
                                     ?>                            
                                 </div> 
                                 <!-- links --> 
-                                <div class="mail-links">                              
-                                    <button type="submit" name="trash" class="btn btn-danger btn-icon">Trash<i class="entypo-trash"></i> </button> 
-                                    <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>" class="btn btn-primary btn-icon">
-                                        Reply<i class="entypo-reply"></i> 
-                                    </a> 
+                                <div class="mail-links"> 
+                                    
+                                    <?php if(isset($_GET['stat'])) { ?>
+                                        <button type="submit" name="delete" class="btn btn-danger btn-icon">Delete Forever<i class="entypo-trash"></i> </button>
+                                    <?php }else{ ?>
+                                        <button type="submit" name="trash" class="btn btn-danger btn-icon">Trash<i class="entypo-trash"></i> </button>
+                                    <?php } ?>
+                                    <?php if(!isset($_GET['stat'])){ ?>
+                                        <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>" class="btn btn-primary btn-icon">
+                                            Reply<i class="entypo-reply"></i> 
+                                        </a> 
+                                    <?php } ?>
+
+                                
                                 </div> 
                             </div> 
                             <div class="mail-info"> 

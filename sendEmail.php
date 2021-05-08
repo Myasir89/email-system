@@ -68,8 +68,7 @@ include('support/sent_action.php');
                                  while($row = $result->fetch_assoc()){ 
                                     $id =  $row['id'];                                      
                                     $date = $row['date'];
-                                    $time = $row['time'];
-                                    $favorite = $row['favorite'];
+                                    $time = $row['time'];                                    
                                     $receiverEmail = $row['receiverEmail'];                                     
                                     $emailSubject = $row['emailSubject']; 
                                     $timezone = new DateTime("now", new DateTimeZone('Asia/Karachi') );
@@ -88,7 +87,7 @@ include('support/sent_action.php');
                                 <tr>
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
-                                        <a href="#" class="star <?php if($favorite == 1){ ?> stared <?php } ?> "> <i class="entypo-star"></i> </a> 
+                                        <a href="#" class="star stared"> <i class="entypo-star"></i> </a> 
                                         <a href="message.php?id=<?php echo $id; ?>&action=<?php echo 'sentEmail'; ?>" class="col-name"><?php echo "To: ".$reciverName; ?> &nbsp;                                            
                                         </a> 
                                     </td>                             

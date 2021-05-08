@@ -3,6 +3,28 @@ include 'connection.php';
 $select = "SELECT * FROM `drafts` where `senderEmail` = '$userEmail' ORDER BY `date` DESC, `time` DESC";
 $result = mysqli_query($con, $select);
 
+if (isset($_GET['stat'])) {
+  $id = $_GET['id'];
+  $select_ = "SELECT * FROM trash where id = $id";
+  $result_ = mysqli_query($con, $select_);
+  $row = mysqli_fetch_assoc($result_);
+  $receiverEmail = $row['receiverEmail'];
+  $emailSubject = $row['emailSubject'];  
+  $emailBody = $row['emailBody']; 
+  $date = $row['date']; 
+  $time = $row['time']; 
+
+  if($receiverEmail != ''){
+      $sql_ = "SELECT `full_name` FROM `user` WHERE email = '$receiverEmail'";
+      $res_ = mysqli_query($con, $sql_);
+      $r = mysqli_fetch_assoc($res_); 
+     echo $receiverName = $r['full_name'];
+  }else{
+      $receiverName = '' ;
+  }
+
+}
+
 if (isset($_GET['status'])) {
     $id = $_GET['id'];
     $select_ = "SELECT * FROM drafts where id = $id";
@@ -24,6 +46,19 @@ if (isset($_GET['status'])) {
     }
 
 }
+
+
+if (isset($_POST['delete'])) {
+  $id = $_GET['id'];
+  $sql = "DELETE FROM `trash` WHERE id = '$id'";
+  if (mysqli_query($con, $sql)) {
+    header('location: trashEmails.php');      
+  }
+  else{
+    echo mysqli_error($con);
+  }
+}
+
 
 if (isset($_POST['trash'])) {
     $id = $_GET['id'];

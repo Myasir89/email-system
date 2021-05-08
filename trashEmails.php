@@ -78,6 +78,7 @@ include('support/trash_action.php');
                                     $id =  $row['id'];                                      
                                     $date = $row['date'];
                                     $time = $row['time'];  
+                                    $status = $row['status'];  
                                     $emailBody = $row['emailBody']; 
                                     $emailSubject = $row['emailSubject']; 
                                     $receiverEmail = $row['receiverEmail'];                                                                        
@@ -92,21 +93,42 @@ include('support/trash_action.php');
                                         $sql_ = "SELECT `full_name` FROM `user` WHERE email = '$receiverEmail'";
                                         $result_ = mysqli_query($con, $sql_);
                                         $r = mysqli_fetch_assoc($result_); 
-                                        $sendName = $r['full_name']; 
-                                    }else{
-                                        $sendName = '';
+                                        $name = $r['full_name']; 
+                                    }else{                                
+                                        $name = '';
                                     }                                                                    
                             ?>
                                 <tr>
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
                                         <a href="#" class="star"> <i class="entypo-star"></i> </a> 
-                                        <a href="compose_draft.php?id=<?php echo $id; ?>&status=<?php echo 'draft'?>" class="col-name" style="color:<?php if($sendName==''){ ?> red; <?php }else{ ?> black; <?php } ?>">
-                                            <?php if($sendName==''){ echo 'draft'; }else{ echo $sendName; } ?> 
+                                        <a <?php if($status == 'sent' || $status == 'inbox'){ ?>
+                                                href="message.php?id=<?php echo $id; ?>&stat=<?php echo 'trashEmail'?>" 
+                                            <?php }else if($status == 'draft'){ ?> 
+                                                href="compose_draft.php?id=<?php echo $id; ?>&stat=<?php echo 'trashEmail'?>" 
+                                            <?php } ?>
+                                                class="col-name" style="color:<?php if($name==''){ ?> red; <?php }else{ ?> black; <?php } ?>">
+                                            <?php if($name==''){ echo 'draft'; }
+                                            else{  
+                                                if($status == 'sent'){
+                                                    echo 'me';
+                                                }else if($status == 'inbox'){
+                                                    echo $name;                                                    
+                                                }
+                                            } ?>
+
                                             &nbsp;                                           
                                         </a> 
                                     </td>                             
-                                    <td class="col-subject"> <a href="compose_draft.php?id=<?php echo $id; ?>&status=<?php echo 'draft'?>"><?php if($emailSubject==''){ echo '(no subject)'; }else{ echo $emailSubject; } ?> </a> </td> 
+                                    <td class="col-subject"> 
+                                        <a <?php if($status == 'sent' || $status == 'inbox'){ ?>
+                                            href="message.php?id=<?php echo $id; ?>&stat=<?php echo 'trashEmail'?>" 
+                                        <?php }else if($status == 'draft'){ ?> 
+                                            href="compose_draft.php?id=<?php echo $id; ?>&stat=<?php echo 'trashEmail'?>" 
+                                        <?php } ?>>
+                                            <?php if($emailSubject==''){ echo '(no subject)'; }else{ echo $emailSubject; } ?> 
+                                        </a> 
+                                    </td> 
                                     <td class="col-time"><?php echo $datetime; ?></td> 
                                 </tr>                           
                             

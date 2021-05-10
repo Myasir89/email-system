@@ -11,8 +11,7 @@ $emailSubject = $row['emailSubject'];
 $emailBody = $row['emailBody'];
 $receiverEmail = $row['receiverEmail'];
 $receiverID = $row['receiverID']; 
-$read_status = $row['read_status']; 
-$favorite = $row['favorite']; 
+$read_status = $row['read_status'];  
 $date = $row['date']; 
 $time = $row['time']; 
 
@@ -30,8 +29,8 @@ if (isset($_POST['trash'])) {
         }else{
             $stat = 'inbox';
         }
-        $sql = "INSERT INTO `trash`(`senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
-         ('$senderID', '$senderEmail', '$emailSubject', '$emailBody', '$receiverID', '$receiverEmail', '$date', '$time', '$stat')";
+        $sql = "INSERT INTO `trash`(`senderID`, `usesrEmail`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
+         ('$senderID', '$userEmail', '$senderEmail', '$emailSubject', '$emailBody', '$receiverID', '$receiverEmail', '$date', '$time', '$stat')";
         if (mysqli_query($con, $sql)) {
             $sql_d = "DELETE FROM `emails` WHERE id = '$id'";
             if (mysqli_query($con, $sql_d)) {

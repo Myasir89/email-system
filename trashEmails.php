@@ -42,7 +42,7 @@ include('support/trash_action.php');
                     <!-- Mail Body --> 
                     <div class="mail-body"> <div class="mail-header"> 
                         <!-- title <span class="count">(6)</span>--> 
-                        <h3 class="mail-title">Draft </h3> 
+                        <h3 class="mail-title">Trash </h3> 
 
                         <!-- search --> 
                         <form method="get" role="form" class="mail-search"> 

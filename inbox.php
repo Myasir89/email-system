@@ -101,7 +101,8 @@ include('support/inbox_action.php');
                                 <tr <?php if($readStatus == 0){ ?> class="unread" <?php } ?> >
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
-                                        <a href="#" class="star stared"> <i class="entypo-star"></i> </a> 
+                                        <a href="support/starred_email.php?id=<?php echo $id; ?>&action=<?php echo 'add'; ?>&status=<?php echo 'inbox'; ?>" 
+                                        class="star stared"> <i class="entypo-star"></i> </a> 
                                         <a href="message.php?id=<?php echo $id; ?>&action=<?php echo 'receiveEmail'; ?>" class="col-name"><?php echo $sendName; ?> &nbsp; 
                                             <?php if($readStatus == 0 && $current_date == $date){  ?>
                                                 <span class="badge badge-danger">new</span>

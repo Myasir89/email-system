@@ -73,8 +73,8 @@ if (isset($_POST['trash'])) {
     $receiverID = $row['receiverID']; 
     $date = $row['date']; 
     $time = $row['time']; 
-    $sql = "INSERT INTO `trash`(`senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
-          ('$senderID', '$senderEmail', '$emailSubject', '$emailBody', '$receiverID', '$receiverEmail', '$date', '$time', 'draft')";
+    $sql = "INSERT INTO `trash`(`senderID`, `userEmail`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
+          ('$senderID', '$userEmail', '$senderEmail', '$emailSubject', '$emailBody', '$receiverID', '$receiverEmail', '$date', '$time', 'draft')";
     if (mysqli_query($con, $sql)) {
         $sql_d = "DELETE FROM `drafts` WHERE id = '$id'";
         if (mysqli_query($con, $sql_d)) {

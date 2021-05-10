@@ -40,7 +40,7 @@
 												<td><?php echo $row['email']  ?></td>
 												<td><?php echo $row['full_name']  ?></td>
 												<td><?php echo $row['phone']  ?></td>
-												<td><a class="text-secondary btn btn-danger" href="deleteUser.php?id=<?php echo $row['id'] ?>" >DELETE</a></td>
+												<td><a class="text-secondary btn btn-danger" href="support/delUser.php?id=<?php echo $row['id'] ?>" >DELETE</a></td>
 											</tr>
                                         <?php
 									       }

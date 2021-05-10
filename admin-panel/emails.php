@@ -20,49 +20,31 @@
 									<table class="table table-striped">
 										<thead>
 											<tr>
-												<th>Order No.</th>
-												<th>Name</th>
-												<th>Amount</th>
-												<th>Date &amp; Time</th>
-												<th>Status</th>
+												<th>ID</th>
+												<th>SenderEmail</th>
+												<th>ReceiverEmail</th>
+												<th>Subject</th>
+												<th>EmailBody</th>
+												<th>Action</th>
 											</tr>
 										</thead>
 										<tbody>
+										<?php
+                                        include ('support/connection.php');
+										$select = "SELECT * FROM emails";
+										$result = mysqli_query($con, $select);
+									    while($row = $result->fetch_assoc()){ ?>
 											<tr>
-												<td><a href="#">763648</a></td>
-												<td>Steve</td>
-												<td>$122</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-success">COMPLETED</span></td>
+												<td><?php echo $row['id']  ?></td>
+												<td><?php echo $row['senderEmail']  ?></td>
+												<td><?php echo $row['receiverEmail']  ?></td>
+												<td><?php echo $row['emailSubject']  ?></td>
+												<td><?php echo substr($row['emailBody'],0,30)  ?></td>
+												<td><a class="text-secondary btn btn-danger" href="support/delEmails.php?id=<?php echo $row['id'] ?>" >DELETE</a></td>
 											</tr>
-											<tr>
-												<td><a href="#">763649</a></td>
-												<td>Amber</td>
-												<td>$62</td>
-												<td>Oct 21, 2016</td>
-												<td><span class="label label-warning">PENDING</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763650</a></td>
-												<td>Michael</td>
-												<td>$34</td>
-												<td>Oct 18, 2016</td>
-												<td><span class="label label-danger">FAILED</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763651</a></td>
-												<td>Roger</td>
-												<td>$186</td>
-												<td>Oct 17, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
-											<tr>
-												<td><a href="#">763652</a></td>
-												<td>Smith</td>
-												<td>$362</td>
-												<td>Oct 16, 2016</td>
-												<td><span class="label label-success">SUCCESS</span></td>
-											</tr>
+										<?php
+										}
+										?>
 										</tbody>
 									</table>
 								</div>

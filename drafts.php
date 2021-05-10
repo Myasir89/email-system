@@ -95,12 +95,23 @@ include('support/draft_action.php');
                                         $sendName = $r['full_name']; 
                                     }else{
                                         $sendName = '';
-                                    }                                                                    
+                                    }  
+                                    
+                                    $sql_2 = "SELECT * FROM `starred` WHERE `email_id` = '$id' AND `userEmail` = '$userEmail' AND `status` = 'draft'";
+                                    $result_2 = mysqli_query($con, $sql_2);
+                                    if(mysqli_num_rows($result_2) > 0){
+                                        $favorite = true;     
+                                    }else{
+                                        $favorite = false;    
+                                    }
                             ?>
                                 <tr>
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
-                                        <a href="#" class="star"> <i class="entypo-star"></i> </a> 
+                                        <a href="support/starred_email.php?id=<?php echo $id; ?>&action=<?php if($favorite == false){ echo 'add'; }else{ echo 'remove'; }  ?>&status=<?php echo 'draft'; ?>" 
+                                            class="star <?php if($favorite == true){ ?> stared <?php } ?>" > 
+                                            <i class="entypo-star"></i> 
+                                        </a>  
                                         <a href="compose_draft.php?id=<?php echo $id; ?>&status=<?php echo 'draft'?>" class="col-name" style="color:<?php if($sendName==''){ ?> red; <?php }else{ ?> black; <?php } ?>">
                                             <?php if($sendName==''){ echo 'draft'; }else{ echo $sendName; } ?> 
                                             &nbsp;                                           

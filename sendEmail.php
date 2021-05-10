@@ -83,11 +83,23 @@ include('support/sent_action.php');
                                     $r = mysqli_fetch_assoc($result_); 
                                     $reciverName = $r['full_name'];  
 
+                                    $sql_2 = "SELECT * FROM `starred` WHERE `email_id` = '$id' AND `userEmail` = '$userEmail' AND `status` = 'sent'";
+                                    $result_2 = mysqli_query($con, $sql_2);
+                                    if(mysqli_num_rows($result_2) > 0){
+                                        $favorite = true;     
+                                    }else{
+                                        $favorite = false;    
+                                    }
+
                             ?>
                                 <tr>
                                     <td> <div class="checkbox checkbox-replace"> <input type="checkbox" /> </div> </td> 
                                     <td class="col-name">                                         
-                                        <a href="#" class="star stared"> <i class="entypo-star"></i> </a> 
+                                        <a 
+                                            href="support/starred_email.php?id=<?php echo $id; ?>&action=<?php if($favorite == false){ echo 'add'; }else{ echo 'remove'; }  ?>&status=<?php echo 'sent'; ?>" 
+                                            class="star <?php if($favorite == true){ ?> stared <?php } ?>"> 
+                                            <i class="entypo-star"></i> 
+                                        </a> 
                                         <a href="message.php?id=<?php echo $id; ?>&action=<?php echo 'sentEmail'; ?>" class="col-name"><?php echo "To: ".$reciverName; ?> &nbsp;                                            
                                         </a> 
                                     </td>                             

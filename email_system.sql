@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2021 at 05:58 PM
+-- Generation Time: May 10, 2021 at 09:55 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -90,8 +90,8 @@ CREATE TABLE `emails` (
 
 INSERT INTO `emails` (`id`, `senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `read_status`) VALUES
 (9, 56, 'noorulan45@gmail.com', 'First Email', 'Hello', 54, 'yasir12@gmail.com', 'Apr 27', '04:10:08 PM', 1),
-(12, 54, 'yasir12@gmail.com', 'Email', 'heeloo', 56, 'noorulan45@gmail.com', 'May 01', '04:30:00 PM', 0),
-(13, 54, 'yasir12@gmail.com', 'email', 'dfgfhjgf', 56, 'noorulan45@gmail.com', 'May 01', '04:31:00 PM', 0),
+(12, 54, 'yasir12@gmail.com', 'Email', 'heeloo', 56, 'noorulan45@gmail.com', 'May 01', '04:30:00 PM', 1),
+(13, 54, 'yasir12@gmail.com', 'email', 'dfgfhjgf', 56, 'noorulan45@gmail.com', 'May 01', '04:31:00 PM', 1),
 (15, 56, 'noorulan45@gmail.com', 'Email', 'hello', 54, 'yasir12@gmail.com', 'May 01', '04:42:42 PM', 0),
 (18, 56, 'noorulan45@gmail.com', 'Emails', 'Hello', 54, 'yasir12@gmail.com', 'May 01', '11:57:01 PM', 0),
 (19, 54, 'yasir12@gmail.com', 'My first email', 'Hello', 56, 'noorulan45@gmail.com', 'May 02', '12:28:59 AM', 1),
@@ -108,6 +108,7 @@ INSERT INTO `emails` (`id`, `senderID`, `senderEmail`, `emailSubject`, `emailBod
 
 CREATE TABLE `starred` (
   `id` int(11) NOT NULL,
+  `email_id` int(11) NOT NULL,
   `userEmail` varchar(250) NOT NULL,
   `senderID` int(11) NOT NULL,
   `senderEmail` varchar(250) NOT NULL,
@@ -124,8 +125,10 @@ CREATE TABLE `starred` (
 -- Dumping data for table `starred`
 --
 
-INSERT INTO `starred` (`id`, `userEmail`, `senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
-(2, 'noorulan45@gmail.com', 54, 'yasir12@gmail.com', 'My first email', 'Hello', 56, 'noorulan45@gmail.com', 'May 02', '12:28:59 AM', 'inbox');
+INSERT INTO `starred` (`id`, `email_id`, `userEmail`, `senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
+(10, 12, 'noorulan45@gmail.com', 54, 'yasir12@gmail.com', 'Email', 'heeloo', 56, 'noorulan45@gmail.com', 'May 01', '04:30:00 PM', 'inbox'),
+(11, 24, 'noorulan45@gmail.com', 56, 'noorulan45@gmail.com', 'draft email', 'email', 54, 'yasir12@gmail.com', 'May 04', '12:37:30 AM', 'sent'),
+(12, 3, 'noorulan45@gmail.com', 0, '', '', 'my email', 0, '', 'May 03', '11:27:58 PM', 'draft');
 
 -- --------------------------------------------------------
 
@@ -233,7 +236,7 @@ ALTER TABLE `emails`
 -- AUTO_INCREMENT for table `starred`
 --
 ALTER TABLE `starred`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `trash`

@@ -11,6 +11,7 @@ if(isset($_SESSION['login_user'])){
     $userEmail = $row['email'];
     $fullName = $row['full_name'];
     $phone = $row['phone'];
+    $password = $row['password'];
     
 }else{
     header('Location: index.php');       

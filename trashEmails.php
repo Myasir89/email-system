@@ -135,7 +135,7 @@ include('support/trash_action.php');
                             <?php } }else{ ?>
                                 <tr>
                                     <td><td>
-                                    <td><div style="text-align:center">No conversations in Draft.</div><td>
+                                    <td><div style="text-align:center">No conversations in Trash.</div><td>
                                 </tr>
                             <?php } ?>
                         </tbody> 

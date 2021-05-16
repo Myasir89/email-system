@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 10, 2021 at 09:55 PM
+-- Generation Time: May 16, 2021 at 08:50 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -39,6 +39,28 @@ CREATE TABLE `admin` (
 
 INSERT INTO `admin` (`id`, `email`, `password`) VALUES
 (1, 'yasirrana9002131@gmail.com', '123456');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contact`
+--
+
+CREATE TABLE `contact` (
+  `id` int(11) NOT NULL,
+  `userEmail` varchar(250) NOT NULL,
+  `contact_id` int(11) NOT NULL,
+  `contact_email` varchar(250) NOT NULL,
+  `contact_name` varchar(250) NOT NULL,
+  `contact_image` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `contact`
+--
+
+INSERT INTO `contact` (`id`, `userEmail`, `contact_id`, `contact_email`, `contact_name`, `contact_image`) VALUES
+(3, 'noorulan45@gmail.com', 55, 'yasir12@innovadel-tech-geoinfo.com', 'Yasir', '');
 
 -- --------------------------------------------------------
 
@@ -81,24 +103,25 @@ CREATE TABLE `emails` (
   `receiverEmail` varchar(250) NOT NULL,
   `date` varchar(50) NOT NULL DEFAULT current_timestamp(),
   `time` varchar(50) NOT NULL,
-  `read_status` int(1) NOT NULL DEFAULT 0
+  `read_status` int(1) NOT NULL DEFAULT 0,
+  `spam` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `emails`
 --
 
-INSERT INTO `emails` (`id`, `senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `read_status`) VALUES
-(9, 56, 'noorulan45@gmail.com', 'First Email', 'Hello', 54, 'yasir12@gmail.com', 'Apr 27', '04:10:08 PM', 1),
-(12, 54, 'yasir12@gmail.com', 'Email', 'heeloo', 56, 'noorulan45@gmail.com', 'May 01', '04:30:00 PM', 1),
-(13, 54, 'yasir12@gmail.com', 'email', 'dfgfhjgf', 56, 'noorulan45@gmail.com', 'May 01', '04:31:00 PM', 1),
-(15, 56, 'noorulan45@gmail.com', 'Email', 'hello', 54, 'yasir12@gmail.com', 'May 01', '04:42:42 PM', 0),
-(18, 56, 'noorulan45@gmail.com', 'Emails', 'Hello', 54, 'yasir12@gmail.com', 'May 01', '11:57:01 PM', 0),
-(19, 54, 'yasir12@gmail.com', 'My first email', 'Hello', 56, 'noorulan45@gmail.com', 'May 02', '12:28:59 AM', 1),
-(20, 56, 'noorulan45@gmail.com', 'My First Email', 'Hello', 54, 'yasir12@gmail.com', 'May 02', '12:29:46 AM', 0),
-(22, 56, 'noorulan45@gmail.com', 'My first email', '---------- Forwarded message --------- <br>\r\n                                            From: Bashir &lt; yasir12@gmail.com &gt; <br>\r\n                                            Date: May 02 at 12:28:59 AM<br>\r\n                                            Subject: My first email<br>\r\n                                            To: &lt; noorulan45@gmail.com &gt; <br>\r\n                                            <br>\r\n                                            Hello', 54, 'yasir12@gmail.com', 'May 03', '12:26:01 AM', 1),
-(24, 56, 'noorulan45@gmail.com', 'draft email', 'email', 54, 'yasir12@gmail.com', 'May 04', '12:37:30 AM', 1),
-(25, 56, 'noorulan45@gmail.com', 'Draft test', 'new email', 54, 'yasir12@gmail.com', 'May 04', '12:38:11 AM', 1);
+INSERT INTO `emails` (`id`, `senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `read_status`, `spam`) VALUES
+(9, 56, 'noorulan45@gmail.com', 'First Email', 'Hello', 54, 'yasir12@gmail.com', 'Apr 27', '04:10:08 PM', 1, 0),
+(12, 54, 'yasir12@gmail.com', 'Email', 'heeloo', 56, 'noorulan45@gmail.com', 'May 01', '04:30:00 PM', 1, 0),
+(13, 54, 'yasir12@gmail.com', 'email', 'dfgfhjgf', 56, 'noorulan45@gmail.com', 'May 01', '04:31:00 PM', 1, 1),
+(15, 56, 'noorulan45@gmail.com', 'Email', 'hello', 54, 'yasir12@gmail.com', 'May 01', '04:42:42 PM', 0, 0),
+(18, 56, 'noorulan45@gmail.com', 'Emails', 'Hello', 54, 'yasir12@gmail.com', 'May 01', '11:57:01 PM', 0, 0),
+(19, 54, 'yasir12@gmail.com', 'My first email', 'Hello', 56, 'noorulan45@gmail.com', 'May 02', '12:28:59 AM', 1, 0),
+(20, 56, 'noorulan45@gmail.com', 'My First Email', 'Hello', 54, 'yasir12@gmail.com', 'May 02', '12:29:46 AM', 0, 0),
+(22, 56, 'noorulan45@gmail.com', 'My first email', '---------- Forwarded message --------- <br>\r\n                                            From: Bashir &lt; yasir12@gmail.com &gt; <br>\r\n                                            Date: May 02 at 12:28:59 AM<br>\r\n                                            Subject: My first email<br>\r\n                                            To: &lt; noorulan45@gmail.com &gt; <br>\r\n                                            <br>\r\n                                            Hello', 54, 'yasir12@gmail.com', 'May 03', '12:26:01 AM', 1, 0),
+(24, 56, 'noorulan45@gmail.com', 'draft email', 'email', 54, 'yasir12@gmail.com', 'May 04', '12:37:30 AM', 1, 0),
+(25, 56, 'noorulan45@gmail.com', 'Draft test', 'new email', 54, 'yasir12@gmail.com', 'May 04', '12:38:11 AM', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -186,6 +209,12 @@ INSERT INTO `user` (`id`, `username`, `email`, `full_name`, `phone`, `password`)
 --
 
 --
+-- Indexes for table `contact`
+--
+ALTER TABLE `contact`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `drafts`
 --
 ALTER TABLE `drafts`
@@ -219,6 +248,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `contact`
+--
+ALTER TABLE `contact`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `drafts`

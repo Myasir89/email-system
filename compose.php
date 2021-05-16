@@ -72,7 +72,7 @@
                                 <?php }else { ?>
                                     <div class="form-group"> 
                                         <label for="to">To:</label> 
-                                        <input type="text" data-mask="email" class="form-control" id="to" name="to" tabindex="1" onchange="onChangedFunction()"  />                                 
+                                        <input type="text" data-mask="email" class="form-control" id="to" name="to" tabindex="1"   value= "<?php if(isset($contact_email)){ echo $contact_email; }?>"  onchange="onChangedFunction()"  />                                 
                                     </div> 
                                 <?php } ?>  
 

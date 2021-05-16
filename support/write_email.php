@@ -1,5 +1,11 @@
 <?php
 include 'connection.php';
+
+if (isset($_GET['contact'])) {
+  $contact_email = $_GET['contact'];
+}
+
+
 if (isset($_POST['send'])) {
     if($_POST['to'] != "" && $_POST['to'] != $userEmail){      
     $timezone = new DateTime("now", new DateTimeZone('Asia/Karachi') );

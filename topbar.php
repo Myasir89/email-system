@@ -21,7 +21,7 @@
                     <ul class="dropdown-menu"> 
                         <!-- Reverse Caret --> 
                         <li class="caret"></li> 
-                        <li> <a href="compose.php"> <i class="entypo-user"></i>Edit Profile</a> </li> 
+                        <li> <a href="edit_profile.php"> <i class="entypo-user"></i>Edit Profile</a> </li> 
                         <li> <a href="inbox.php"> <i class="entypo-mail"></i>Inbox</a> </li> 
                         <li> <a href="support/logout.php"> <i class="entypo-logout"></i>Logout</a> </li>                     
                     </ul>

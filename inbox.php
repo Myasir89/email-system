@@ -42,15 +42,14 @@ include('support/inbox_action.php');
                     <!-- Mail Body --> 
                     <div class="mail-body"> <div class="mail-header"> 
                         <!-- title <span class="count">(6)</span>--> 
-                        <h3 class="mail-title">Inbox </h3> 
-
+                        <h3 class="mail-title">Inbox </h3>         
                         <!-- search --> 
                         <form method="get" role="form" class="mail-search"> 
                             <div class="input-group"> <input type="text" class="form-control" name="s" placeholder="Search for mail..." /> 
                                 <div class="input-group-addon"> <i class="entypo-search"></i> </div> 
                             </div> 
                         </form> 
-                    </div> 
+                    </div>              
                     <!-- mail table --> 
                     <table class="table mail-table"> 
                         

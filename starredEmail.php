@@ -137,7 +137,7 @@ include('support/starred_action.php');
                             <?php } }else{ ?>
                                 <tr>
                                     <td><td>
-                                    <td><div style="text-align:center">No conversations in Draft.</div><td>
+                                    <td><div style="text-align:center">No conversations in Starred Email.</div><td>
                                 </tr>
                             <?php } ?>
                         </tbody> 

@@ -17,6 +17,7 @@ if (isset($_POST['add_contact'])) {
         $row = mysqli_fetch_assoc($res_e);    
         $contactID = $row['id'];
         $contactName = $row['full_name'];
+        $image = $row['image'];
         $sql_c = "SELECT * FROM contact WHERE contact_email='$email'";
         $res_c = mysqli_query($con, $sql_c);
         $r = mysqli_num_rows($res_c);
@@ -24,7 +25,7 @@ if (isset($_POST['add_contact'])) {
             $e = "Contact Already Added"; 
           }else{
               $sql = "INSERT INTO `contact`( `userEmail`, `contact_id`, `contact_email`, `contact_name`, `contact_image`) VALUES 
-              ('$userEmail', '$contactID', '$email', '$contactName', '')";
+              ('$userEmail', '$contactID', '$email', '$contactName', '$image')";
             if (mysqli_query($con, $sql)) {
                 echo("<meta http-equiv='refresh' content='1'>");
             }

@@ -16,7 +16,7 @@
             <ul class="list-inline links-list pull-right"> 
                 <li class="profile-info dropdown">                
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white"> 
-                    <?php echo $fullName ?> &nbsp;&nbsp;&nbsp;  <img src="assets/images/thumb-1%402x.png" alt="" class="img-circle" width="40" />
+                    <?php echo $fullName ?> &nbsp;&nbsp;&nbsp;  <img src="<?php if($image != ""){ echo 'assets/images/'.$image;  }else{ echo 'assets/images/user.png';  }?>"  alt="" class="img-circle" width="40" />
                     </a> 
                     <ul class="dropdown-menu"> 
                         <!-- Reverse Caret --> 

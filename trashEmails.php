@@ -81,7 +81,7 @@ include('support/trash_action.php');
                                     $status = $row['status'];  
                                     $emailBody = $row['emailBody']; 
                                     $emailSubject = $row['emailSubject']; 
-                                    $receiverEmail = $row['receiverEmail'];                                                                        
+                                    $senderEmail = $row['senderEmail'];                                                                        
                                     $timezone = new DateTime("now", new DateTimeZone('Asia/Karachi') );
                                     $current_date =  $timezone->format('M d');
                                     if($current_date == $date) {
@@ -89,8 +89,8 @@ include('support/trash_action.php');
                                     }else{
                                         $datetime = $date;
                                     }  
-                                    if($receiverEmail != ''){
-                                        $sql_ = "SELECT `full_name` FROM `user` WHERE email = '$receiverEmail'";
+                                    if($senderEmail != ''){
+                                        $sql_ = "SELECT `full_name` FROM `user` WHERE email = '$senderEmail'";
                                         $result_ = mysqli_query($con, $sql_);
                                         $r = mysqli_fetch_assoc($result_); 
                                         $name = $r['full_name']; 

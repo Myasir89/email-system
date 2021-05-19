@@ -15,10 +15,11 @@ $read_status = $row['read_status'];
 $date = $row['date']; 
 $time = $row['time']; 
 
-$sql_ = "SELECT `full_name` FROM `user` WHERE email = '$senderEmail'";
+$sql_ = "SELECT * FROM `user` WHERE email = '$senderEmail'";
 $result_ = mysqli_query($con, $sql_);
 $r = mysqli_fetch_assoc($result_); 
 $senderName = $r['full_name'];
+$user_image = $r['image']; 
 
 $query = "UPDATE `emails` SET `read_status`= '1' WHERE id = $id";
 if (mysqli_query($con, $query)) {}
@@ -29,7 +30,7 @@ if (isset($_POST['trash'])) {
         }else{
             $stat = 'inbox';
         }
-        $sql = "INSERT INTO `trash`(`senderID`, `usesrEmail`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
+        $sql = "INSERT INTO `trash`(`senderID`, `userEmail`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
          ('$senderID', '$userEmail', '$senderEmail', '$emailSubject', '$emailBody', '$receiverID', '$receiverEmail', '$date', '$time', '$stat')";
         if (mysqli_query($con, $sql)) {
             $sql_d = "DELETE FROM `emails` WHERE id = '$id'";
@@ -54,19 +55,31 @@ if (isset($_POST['trash'])) {
     $result_1 = mysqli_query($con, $select_1);
     $row = mysqli_fetch_assoc($result_1);
     $receiverEmail = $row['receiverEmail'];
+    $senderEmail = $row['senderEmail'];
     $emailSubject = $row['emailSubject'];  
     $emailBody = $row['emailBody']; 
     $date = $row['date']; 
     $time = $row['time']; 
+    $delete_stat = $row['status']; 
   
     if($receiverEmail != ''){
-        $sql_ = "SELECT `full_name` FROM `user` WHERE email = '$receiverEmail'";
+        $sql_ = "SELECT * FROM `user` WHERE email = '$receiverEmail'";
         $res_ = mysqli_query($con, $sql_);
         $r = mysqli_fetch_assoc($res_); 
         $receiverName = $r['full_name'];
     }else{
         $receiverName = '' ;
     }
+
+    if($senderEmail != ''){
+      $sql__ = "SELECT * FROM `user` WHERE email = '$senderEmail'";
+      $res__ = mysqli_query($con, $sql__);
+      $r = mysqli_fetch_assoc($res__); 
+      $senderName = $r['full_name'];
+      $senderImg = $r['image'];
+  }else{
+      $senderName = '' ;
+  }
   
   }
 

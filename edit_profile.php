@@ -1,6 +1,6 @@
 <?php
 include('support/session.php');
-
+include('support/profile.php');
 ?>
 
 <!DOCTYPE html> 
@@ -81,11 +81,11 @@ include('support/session.php');
             </div>
             <div class="login-form"> 
                 <div class="login-content"> 
-                    <form method="post" role="form" id="form_lockscreen"> 
+                    <form method="post" role="form" enctype="multipart/form-data"> 
                         <div class="form-group lockscreen-input"> 
                             <div class="lockscreen-thumb"> 
                                   <div class="profile-avatar-wrapper">
-                                    <img class="profile-pic" src="assets/images/user.png"  />                                    
+                                    <img class="profile-pic" src="<?php if($image != ""){ echo 'assets/images/'.$image;  }else{ echo 'assets/images/user.png';  }?>"  />                                    
                                     <input class="file-upload" name="profile" type="file" accept="image/*" style="display:none; visibility:hidden;"/>
                                 </div>
                             </div>
@@ -114,7 +114,7 @@ include('support/session.php');
                             </div>
                         </div>                    
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary btn-block btn-login"> 
+                            <button type="submit" name="update" class="btn btn-primary btn-block btn-login"> 
                                 <i class="entypo-login"></i>Save
                             </button>
                         </div> 

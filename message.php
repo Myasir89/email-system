@@ -70,12 +70,29 @@
                             </div> 
                             <div class="mail-info"> 
                                 <div class="mail-sender dropdown"> 
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                                        <img src="assets/images/thumb-1.png" class="img-circle" width="30" /> 
-                                        <span><?php echo $senderName; ?> </span> <?php echo $senderEmail; ?>    to <span>me</span> 
-                                    </a> 
-                                    <ul class="dropdown-menu dropdown-red">                                  
-                                        <li> <a href="#"> <i class="entypo-star"></i>Star this message</a> </li> 
+                                    <?php if(isset($_GET['stat'])) {  ?>    
+
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                                            <img src="<?php if($senderImg != ""){ echo 'assets/images/'.$senderImg;  }else{ echo 'assets/images/user.png';  }?>" class="img-circle" width="30" /> 
+                                            <span><?php echo $senderName; ?> </span> <?php echo '< '.$senderEmail.' >'; ?>    to <span> <?php if($delete_stat == 'sent'){ echo $receiverName; } else if($delete_stat == 'inbox'){ echo 'me'; } ?> </span> 
+                                        </a> 
+                                
+                                    <?php }else{ ?>  
+                                        <?php                                
+                                            $q = "SELECT  * from user where email = '$receiverEmail'" ;
+                                            $r = mysqli_query($con, $q);
+                                            $row = mysqli_fetch_assoc($r);
+                                            $receiverName = $row['full_name'];                             
+                                        ?>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
+                                            <img src="<?php if($user_image != ""){ echo 'assets/images/'.$user_image;  }else{ echo 'assets/images/user.png';  }?>" class="img-circle" width="30" /> 
+                                            <span><?php echo $senderName; ?> </span> <?php echo '< '.$senderEmail.' >'; ?>    to <span> <?php if($_GET['action'] == 'sentEmail'){ echo $receiverName; }else{ echo 'me'; } ?> </span> 
+                                        </a> 
+                                    <?php } ?>
+                                  
+
+
+                                    <ul class="dropdown-menu dropdown-red">                                                      
                                         <li> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'reply';?>"> <i class="entypo-reply"></i>Reply</a> </li> 
                                         <li> <a href="compose.php?id=<?php echo $id; ?>&status=<?php echo 'forward';?>"> <i class="entypo-right"></i>Forward</a> </li> 
                                     </ul> 
@@ -85,41 +102,6 @@
                             <div class="mail-text"> 
                                 <p><?php echo $emailBody; ?></p>                           
                             </div> 
-                            <!-- <div class="mail-attachments"> 
-                                <h4> <i class="entypo-attach"></i> Attachments <span>(2)</span> </h4> 
-                                <ul> 
-                                    <li> 
-                                        <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
-                                        <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
-                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                    </li> 
-                                    <li> 
-                                        <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
-                                        <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
-                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                    </li> 
-                                    <li> 
-                                        <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
-                                        <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
-                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div>
-                                    </li> 
-                                    <li> 
-                                        <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
-                                        <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
-                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                    </li> 
-                                    <li> 
-                                        <a href="#" class="thumb"> <img src="assets/images/attach-1.png" class="img-rounded" /> </a> 
-                                        <a href="#" class="name">IMG_007.jpg<span>14KB</span> </a> 
-                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                    </li> 
-                                    <li> 
-                                        <a href="#" class="thumb download"> <img src="assets/images/attach-2.png" class="img-rounded" /> </a> 
-                                        <a href="#" class="name">IMG_008.jpg<span>12KB</span> </a> 
-                                        <div class="links"> <a href="#">View</a> - <a href="#">Download</a> </div> 
-                                    </li> 
-                                </ul> 
-                            </div>  -->
                             <div class="mail-reply"> 
                                 <div class="fake-form"> 
                                     <div> 

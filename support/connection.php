@@ -2,10 +2,10 @@
 
 $hostname = "localhost";
 $username = "root";
-$password = "";
+$pass = "";
 $database = "email_system";
 
-$con = mysqli_connect($hostname,$username,$password,$database);
+$con = mysqli_connect($hostname,$username,$pass,$database);
 if (!$con) {
     die("Connection failed: " . mysqli_connect_error());
 }

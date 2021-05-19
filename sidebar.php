@@ -42,7 +42,7 @@
                 $contact_email = $row['contact_email'];
                 $contact_image = $row['contact_image']; 
         ?>
-            <li> <a href="compose.php?contact=<?php echo $contact_email; ?>"><img src="assets/images/thumb-1%402x.png" alt="" class="img-circle" width="30" /> &nbsp;&nbsp;&nbsp; <?php echo $contact_name; ?></a></li> 
+            <li> <a href="compose.php?contact=<?php echo $contact_email; ?>"><img src="<?php if($contact_image != ""){ echo 'assets/images/'.$contact_image;  }else{ echo 'assets/images/user.png';  }?>"  alt="" class="img-circle" width="30" /> &nbsp;&nbsp;&nbsp; <?php echo $contact_name; ?></a></li> 
         <?php } } ?>
 
     </ul>  

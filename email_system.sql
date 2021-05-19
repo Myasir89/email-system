@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 16, 2021 at 08:50 PM
+-- Generation Time: May 19, 2021 at 06:08 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.2.33
 
@@ -60,7 +60,8 @@ CREATE TABLE `contact` (
 --
 
 INSERT INTO `contact` (`id`, `userEmail`, `contact_id`, `contact_email`, `contact_name`, `contact_image`) VALUES
-(3, 'noorulan45@gmail.com', 55, 'yasir12@innovadel-tech-geoinfo.com', 'Yasir', '');
+(3, 'noorulan45@gmail.com', 55, 'yasir12@innovadel-tech-geoinfo.com', 'Yasir', ''),
+(4, 'noorulan45@gmail.com', 54, 'yasir12@gmail.com', 'Bashir', '');
 
 -- --------------------------------------------------------
 
@@ -116,12 +117,10 @@ INSERT INTO `emails` (`id`, `senderID`, `senderEmail`, `emailSubject`, `emailBod
 (12, 54, 'yasir12@gmail.com', 'Email', 'heeloo', 56, 'noorulan45@gmail.com', 'May 01', '04:30:00 PM', 1, 0),
 (13, 54, 'yasir12@gmail.com', 'email', 'dfgfhjgf', 56, 'noorulan45@gmail.com', 'May 01', '04:31:00 PM', 1, 1),
 (15, 56, 'noorulan45@gmail.com', 'Email', 'hello', 54, 'yasir12@gmail.com', 'May 01', '04:42:42 PM', 0, 0),
-(18, 56, 'noorulan45@gmail.com', 'Emails', 'Hello', 54, 'yasir12@gmail.com', 'May 01', '11:57:01 PM', 0, 0),
-(19, 54, 'yasir12@gmail.com', 'My first email', 'Hello', 56, 'noorulan45@gmail.com', 'May 02', '12:28:59 AM', 1, 0),
-(20, 56, 'noorulan45@gmail.com', 'My First Email', 'Hello', 54, 'yasir12@gmail.com', 'May 02', '12:29:46 AM', 0, 0),
+(18, 56, 'noorulan45@gmail.com', 'Emails', 'Hello', 54, 'yasir12@gmail.com', 'May 01', '11:57:01 PM', 1, 0),
+(20, 56, 'noorulan45@gmail.com', 'My First Email', 'Hello', 54, 'yasir12@gmail.com', 'May 02', '12:29:46 AM', 1, 0),
 (22, 56, 'noorulan45@gmail.com', 'My first email', '---------- Forwarded message --------- <br>\r\n                                            From: Bashir &lt; yasir12@gmail.com &gt; <br>\r\n                                            Date: May 02 at 12:28:59 AM<br>\r\n                                            Subject: My first email<br>\r\n                                            To: &lt; noorulan45@gmail.com &gt; <br>\r\n                                            <br>\r\n                                            Hello', 54, 'yasir12@gmail.com', 'May 03', '12:26:01 AM', 1, 0),
-(24, 56, 'noorulan45@gmail.com', 'draft email', 'email', 54, 'yasir12@gmail.com', 'May 04', '12:37:30 AM', 1, 0),
-(25, 56, 'noorulan45@gmail.com', 'Draft test', 'new email', 54, 'yasir12@gmail.com', 'May 04', '12:38:11 AM', 1, 0);
+(24, 56, 'noorulan45@gmail.com', 'draft email', 'email', 54, 'yasir12@gmail.com', 'May 04', '12:37:30 AM', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -149,7 +148,6 @@ CREATE TABLE `starred` (
 --
 
 INSERT INTO `starred` (`id`, `email_id`, `userEmail`, `senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
-(10, 12, 'noorulan45@gmail.com', 54, 'yasir12@gmail.com', 'Email', 'heeloo', 56, 'noorulan45@gmail.com', 'May 01', '04:30:00 PM', 'inbox'),
 (11, 24, 'noorulan45@gmail.com', 56, 'noorulan45@gmail.com', 'draft email', 'email', 54, 'yasir12@gmail.com', 'May 04', '12:37:30 AM', 'sent'),
 (12, 3, 'noorulan45@gmail.com', 0, '', '', 'my email', 0, '', 'May 03', '11:27:58 PM', 'draft');
 
@@ -178,7 +176,10 @@ CREATE TABLE `trash` (
 --
 
 INSERT INTO `trash` (`id`, `userEmail`, `senderID`, `senderEmail`, `emailSubject`, `emailBody`, `receiverID`, `receiverEmail`, `date`, `time`, `status`) VALUES
-(3, 'noorulan45@gmail.com', 56, 'noorulan45@gmail.com', 'Third Email', 'Hello', 54, 'yasir12@gmail.com', 'May 01', '04:38:30 PM', 'sent');
+(5, 'noorulan45@gmail.com', 54, 'yasir12@gmail.com', 'My first email', 'Hello', 56, 'noorulan45@gmail.com', 'May 02', '12:28:59 AM', 'inbox'),
+(6, 'noorulan45@gmail.com', 56, 'noorulan45@gmail.com', 'srttyu', 'dffghjkltertyjnb', 54, 'yasir12@gmail.com ', 'May 18', '12:11:50 AM', 'sent'),
+(7, 'noorulan45@gmail.com', 56, 'noorulan45@gmail.com', '', 'serrettry7uyiyuy', 54, 'yasir12@gmail.com', 'May 18', '12:03:05 AM', 'sent'),
+(8, 'noorulan45@gmail.com', 56, 'noorulan45@gmail.com', 'Draft test', 'new email', 54, 'yasir12@gmail.com', 'May 04', '12:38:11 AM', 'sent');
 
 -- --------------------------------------------------------
 
@@ -192,17 +193,18 @@ CREATE TABLE `user` (
   `email` varchar(250) NOT NULL,
   `full_name` varchar(250) NOT NULL,
   `phone` varchar(250) NOT NULL,
-  `password` varchar(250) NOT NULL
+  `password` varchar(250) NOT NULL,
+  `image` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `email`, `full_name`, `phone`, `password`) VALUES
-(54, 'bashir', 'yasir12@gmail.com', 'Bashir', '534545345', '12345678'),
-(55, 'yasir', 'yasir12@innovadel-tech-geoinfo.com', 'Yasir', '534545345', '1234'),
-(56, 'Noor', 'noorulan45@gmail.com', 'Noor', '03001234567', '12345678');
+INSERT INTO `user` (`id`, `username`, `email`, `full_name`, `phone`, `password`, `image`) VALUES
+(54, 'bashir', 'yasir12@gmail.com', 'Bashir', '534545345', '12345678', ''),
+(55, 'yasir', 'yasir12@innovadel-tech-geoinfo.com', 'Yasir', '534545345', '1234', ''),
+(56, 'Noor', 'noorulan45@gmail.com', 'Noor ul ain', '03001234560', '123456789', 'Summary_1621357061.png');
 
 --
 -- Indexes for dumped tables
@@ -253,31 +255,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `contact`
 --
 ALTER TABLE `contact`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `drafts`
 --
 ALTER TABLE `drafts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `emails`
 --
 ALTER TABLE `emails`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `starred`
 --
 ALTER TABLE `starred`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `trash`
 --
 ALTER TABLE `trash`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user`
